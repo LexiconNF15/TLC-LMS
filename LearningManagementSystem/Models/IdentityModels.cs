@@ -9,6 +9,13 @@ namespace LearningManagementSystem.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int GroupId { get; set; }
+
+        public virtual Group Group { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -29,5 +36,13 @@ namespace LearningManagementSystem.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<LearningManagementSystem.Models.Group> Groups { get; set; }
+
+        public System.Data.Entity.DbSet<LearningManagementSystem.Models.Course> Courses { get; set; }
+
+        public System.Data.Entity.DbSet<LearningManagementSystem.Models.Activity> Activities { get; set; }
+
+        public System.Data.Entity.DbSet<LearningManagementSystem.Models.Type> Types { get; set; }
     }
 }

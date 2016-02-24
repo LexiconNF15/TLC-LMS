@@ -1,0 +1,50 @@
+﻿@model LearningManagementSystem.Models.Group
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GroupId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
