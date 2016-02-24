@@ -13,9 +13,9 @@ namespace LearningManagementSystem.Models
         public DateTime ActivityStart { get; set; }
         public DateTime? ActivityEnd { get; set; }
         public int CourseId { get; set; }
-        public int TypeId { get; set; }
+        public int ActivityTypeId { get; set; }
        
-        public virtual Type Type { get; set; }
+        public virtual ActivityType ActivityType { get; set; }
         public virtual Course Course { get; set; }
 
 

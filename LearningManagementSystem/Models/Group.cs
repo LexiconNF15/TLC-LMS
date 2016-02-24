@@ -20,8 +20,6 @@ namespace LearningManagementSystem.Models
         public virtual ICollection<ApplicationUser> Users { get; set; }
 
        
-
-
         ///
     }
         

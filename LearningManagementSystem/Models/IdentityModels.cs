@@ -43,6 +43,6 @@ namespace LearningManagementSystem.Models
 
         public System.Data.Entity.DbSet<LearningManagementSystem.Models.Activity> Activities { get; set; }
 
-        public System.Data.Entity.DbSet<LearningManagementSystem.Models.Type> Types { get; set; }
+        public System.Data.Entity.DbSet<LearningManagementSystem.Models.ActivityType> ActivityTypes { get; set; }
     }
 }

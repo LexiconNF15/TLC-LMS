@@ -5,10 +5,10 @@ using System.Web;
 
 namespace LearningManagementSystem.Models
 {
-    public class Type
+    public class ActivityType
     {
-        public int TypeId { get; set; }
-        public string TypeName { get; set; }
+        public int ActivityTypeId { get; set; }
+        public string ActivityTypeName { get; set; }
 
         public virtual ICollection<Activity> Activity { get; set; }
 
