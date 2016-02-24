@@ -14,7 +14,7 @@ namespace LearningManagementSystem.Models
         public DateTime? GroupEnd { get; set; }
 
         ///navigation
-        ///
+
         public virtual ICollection<Course> Courses { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
