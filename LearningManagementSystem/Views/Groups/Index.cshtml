@@ -4,48 +4,64 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Grupper</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa grupp", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.GroupName)
+            Gruppnamn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupDescription)
+            Startdatum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GroupEnd)
+            Slutdatum
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupStart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupEnd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GroupId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GroupId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GroupId })
-        </td>
-    </tr>
-}
+    @*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupEnd)
+            </th>
+            <th></th>
+        </tr>*@
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.GroupDescription)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupEnd)
+            </td>
+            <td>
+                @Html.ActionLink("Redigera", "Edit", new { id = item.GroupId }) |
+                @Html.ActionLink("Detailjer", "Details", new { id = item.GroupId }) |
+                @Html.ActionLink("Radera", "Delete", new { id = item.GroupId })
+            </td>
+        </tr>
+    }
 
 </table>
