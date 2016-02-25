@@ -1,6 +1,8 @@
 namespace LearningManagementSystem.Migrations
 {
     using LearningManagementSystem.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -16,6 +18,50 @@ namespace LearningManagementSystem.Migrations
 
         protected override void Seed(LearningManagementSystem.Models.ApplicationDbContext context)
         {
+
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var users = new List<ApplicationUser> {
+                 new ApplicationUser { 
+                     UserName = "admin@lexicon.se", 
+                     Email = "admin@lexicon.se", 
+                     GroupId = 1, 
+                     FirstName = "Anna", 
+                     LastName = "Andersson",
+                 },  
+            new ApplicationUser { 
+                UserName = "user@mail.com", 
+                Email = "user@mail.com", 
+                GroupId = 1, 
+                FirstName = "Ulrika",
+                LastName = "Svensson",
+            },
+             new ApplicationUser { 
+                 UserName = "student@mail.com",
+                 Email = "student@mail.com",
+                 GroupId = 2, 
+                 FirstName = "Sven", 
+                 LastName = "Andersson"} 
+
+            };
+
+                 foreach (var u in users)
+	{
+		  userManager.Create(u, "foobar1");
+	}
+
+           
+          
+           
+
+          
+
+                    //var user = new ApplicationUser {UserName = email, Email = "admin@lexicon.se"};
+                   
+               
+
+           
             var groups = new List<Group> {
                 new Group {
                     GroupId = 1,
@@ -135,5 +181,7 @@ namespace LearningManagementSystem.Migrations
             activities.ForEach(a => context.Activities.Add(a));
             context.SaveChanges();  //databasen uppdateras
         }
+    
     }
 }
+
