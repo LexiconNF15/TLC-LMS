@@ -85,19 +85,19 @@ namespace LearningManagementSystem.Migrations
             var types = new List<ActivityType> {
                 new ActivityType {
                     ActivityTypeId = 1 ,
-                    ActivityTypeName= "DatabasModellering"}, 
+                    ActivityTypeName= "E-learning"}, 
                     new ActivityType {
                     ActivityTypeId = 2 ,
-                    ActivityTypeName= "DatabasModellering"}, 
+                    ActivityTypeName= "Lecture"}, 
                     new ActivityType {
                     ActivityTypeId = 3 ,
-                    ActivityTypeName= "DatabasModellering"}, 
+                    ActivityTypeName= "Code-A-Long"}, 
                     new ActivityType {
                     ActivityTypeId = 4 ,
-                    ActivityTypeName= "DatabasModellering"},
+                    ActivityTypeName= "Exercisee"},
                     new ActivityType {
                     ActivityTypeId = 5 ,
-                    ActivityTypeName= "DatabasModellering"}, 
+                    ActivityTypeName= "Assignment"}, 
 
                 };
             types.ForEach(t => context.ActivityTypes.Add(t));
@@ -115,20 +115,20 @@ namespace LearningManagementSystem.Migrations
                     ActivityTypeId = 1},
                     new Activity {
                     ActivityId = 1 ,
-                    ActivityName= "DatabasModellering", 
+                    ActivityName= "C# Collections", 
                     ActivityDescription= "Blablabla",
-                    ActivityStart=DateTime.Parse("2016-04-01"),
-                    ActivityEnd=DateTime.Parse("2016-08-31"),
+                    ActivityStart=DateTime.Parse("2016-02-28"),
+                    ActivityEnd=DateTime.Parse("2016-03-14"),
                     CourseId = 1,
                     ActivityTypeId = 1},
                     new Activity {
-                    ActivityId = 1 ,
-                    ActivityName= "DatabasModellering", 
+                    ActivityId = 2 ,
+                    ActivityName= "JAVA Enterprise", 
                     ActivityDescription= "Blablabla",
                     ActivityStart=DateTime.Parse("2016-04-01"),
                     ActivityEnd=DateTime.Parse("2016-08-31"),
-                    CourseId = 1,
-                    ActivityTypeId = 1},
+                    CourseId = 2,
+                    ActivityTypeId = 2},
 
 
         };
