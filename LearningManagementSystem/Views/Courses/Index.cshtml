@@ -7,25 +7,25 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa kurs", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CourseName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CourseDescription)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CourseStart)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CourseEnd)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.GroupId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -34,22 +34,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.CourseName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CourseDescription)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CourseStart)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CourseEnd)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.GroupId)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CourseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CourseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CourseId })
+            @Html.ActionLink("Redigera", "Edit", new { id=item.CourseId }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.CourseId }) |
+            @Html.ActionLink("Radera", "Delete", new { id=item.CourseId })
         </td>
     </tr>
 }
