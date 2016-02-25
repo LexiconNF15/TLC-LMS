@@ -56,8 +56,6 @@ namespace LearningManagementSystem.Migrations
            
 
           
-
-                    //var user = new ApplicationUser {UserName = email, Email = "admin@lexicon.se"};
                    
                
 
