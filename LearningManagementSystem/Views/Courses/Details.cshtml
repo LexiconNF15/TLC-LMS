@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Kursnamn
+            @Html.DisplayNameFor(model => model.CourseName)
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            Beskrivning
+            @Html.DisplayNameFor(model => model.CourseDescription)
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-           Startdatum
+          @Html.DisplayNameFor(model => model.CourseStart)
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            Slutdatum
+            @Html.DisplayNameFor(model => model.CourseEnd)
         </dt>
 
         <dd>
@@ -43,11 +43,19 @@
         </dd>
 
         <dt>
-            GruppId
+            @Html.DisplayNameFor(model => model.GroupId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.GroupId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Group.GroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.GroupName)
         </dd>
 
     </dl>

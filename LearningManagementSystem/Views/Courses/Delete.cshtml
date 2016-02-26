@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-           Kursnamn
+           @Html.DisplayNameFor(model => model.CourseName)
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-           Beskrivning
+           @Html.DisplayNameFor(model => model.CourseDescription)
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            Startdatum
+            @Html.DisplayNameFor(model => model.CourseStart)
         </dt>
 
         <dd>
@@ -36,19 +36,11 @@
         </dd>
 
         <dt>
-           Slutdatum
+           @Html.DisplayNameFor(model => model.CourseEnd)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CourseEnd)
-        </dd>
-
-        <dt>
-            Gruppid
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GroupId)
         </dd>
 
     </dl>
@@ -57,7 +49,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Radera" class="btn btn-default" /> |
+            <input type="submit" value="Radera" class="btn btn-default btn-danger" /> |
             @Html.ActionLink("Tillbaka", "Index")
         </div>
     }
