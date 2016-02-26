@@ -46,7 +46,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ActivityId,ActivityName,ActivityDescription,ActivityStart,ActivityEnd,CourseId,TypeId")] Activity activity)
+        public ActionResult Create([Bind(Include = "ActivityId,ActivityName,ActivityDescription,ActivityStart,ActivityEnd,CourseId,ActivityTypeId")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActivityId,ActivityName,ActivityDescription,ActivityStart,ActivityEnd,CourseId,TypeId")] Activity activity)
+        public ActionResult Edit([Bind(Include = "ActivityId,ActivityName,ActivityDescription,ActivityStart,ActivityEnd,CourseId,ActivityTypeId")] Activity activity)
         {
             if (ModelState.IsValid)
             {

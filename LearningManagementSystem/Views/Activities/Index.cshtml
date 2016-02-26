@@ -4,31 +4,31 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Aktivitet</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa aktivitet", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ActivityName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ActivityName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActivityDescription)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ActivityDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActivityStart)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ActivityStart)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActivityEnd)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ActivityEnd)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CourseId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActivityTypeId)
-        </th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ActivityTypeId)
+        </th>*@
         <th></th>
     </tr>
 
@@ -46,16 +46,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.ActivityEnd)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CourseId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ActivityTypeId)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ActivityId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ActivityId })
+            @Html.ActionLink("Redigera", "Edit", new { id=item.ActivityId }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.ActivityId }) |
+            @Html.ActionLink("Radera", "Delete", new { id=item.ActivityId })
         </td>
     </tr>
 }

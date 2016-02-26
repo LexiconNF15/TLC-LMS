@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Aktivitet</h2>
 
 <div>
-    <h4>Activity</h4>
+    <h4>Aktivitetsdetaljer</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -51,16 +51,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
+            @Html.DisplayNameFor(model => model.ActivityTypeId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TypeId)
+            @Html.DisplayFor(model => model.ActivityTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityType.ActivityTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityType.ActivityTypeName)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ActivityId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Redigera", "Edit", new { id = Model.ActivityId }) |
+    @Html.ActionLink("Tillbaka", "Index")
 </p>
