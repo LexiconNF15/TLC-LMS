@@ -10,36 +10,22 @@
     @Html.ActionLink("Skapa grupp", "Create")
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            Gruppnamn
-        </th>
-        <th>
-            Startdatum
-        </th>
-        <th>
-            Slutdatum
-        </th>
-        <th></th>
-    </tr>
-
-    @*<table class="table">
+    <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GroupName)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().GroupName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.GroupDescription)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().GroupStart)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GroupStart)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupEnd)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().GroupEnd)
             </th>
             <th></th>
-        </tr>*@
+        </tr>
 
     @foreach (var item in Model)
     {
