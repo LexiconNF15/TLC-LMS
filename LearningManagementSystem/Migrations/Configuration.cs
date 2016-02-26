@@ -55,7 +55,7 @@ namespace LearningManagementSystem.Migrations
 
 
         };
-            activities.ForEach(a => context.Activities.Add(a));
+            activities.ForEach(a => context.Activities.AddOrUpdate(a));
             context.SaveChanges();  //databasen uppdateras
         }
 
@@ -67,19 +67,19 @@ namespace LearningManagementSystem.Migrations
                     ActivityTypeName= "E-learning"}, 
                     new ActivityType {
                     ActivityTypeId = 2 ,
-                    ActivityTypeName= "Lecture"}, 
+                    ActivityTypeName= "Föreläsning"}, 
                     new ActivityType {
                     ActivityTypeId = 3 ,
                     ActivityTypeName= "Code-A-Long"}, 
                     new ActivityType {
                     ActivityTypeId = 4 ,
-                    ActivityTypeName= "Exercisee"},
+                    ActivityTypeName= "Övning"},
                     new ActivityType {
                     ActivityTypeId = 5 ,
-                    ActivityTypeName= "Assignment"}, 
+                    ActivityTypeName= "Inlämningsuppgift"}, 
 
                 };
-            types.ForEach(t => context.ActivityTypes.Add(t));
+            types.ForEach(t => context.ActivityTypes.AddOrUpdate(t));
             context.SaveChanges();  //databasen uppdateras
         }
 
@@ -123,7 +123,7 @@ namespace LearningManagementSystem.Migrations
                     GroupId = 3},
                               
              };
-            courses.ForEach(c => context.Courses.Add(c));
+            courses.ForEach(c => context.Courses.AddOrUpdate(c));
             context.SaveChanges();  //databasen uppdateras
         }
 
@@ -154,7 +154,7 @@ namespace LearningManagementSystem.Migrations
                      
             };
 
-            groups.ForEach(g => context.Groups.Add(g));
+            groups.ForEach(g => context.Groups.AddOrUpdate(g));
             context.SaveChanges();  //databasen uppdateras
         }
 

@@ -4,15 +4,15 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Radera</h2>
+<h2>Grupp</h2>
 
-<h3>Är du säker på att du vill radera gruppen?</h3>
+@*<h3>Är du säker på att du vill radera gruppen?</h3>*@
 <div>
     <h4>Radera grupp</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Gruppnamn
+            @Html.DisplayNameFor(model => model.GroupName)
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-           Bskrivning
+            @Html.DisplayNameFor(model => model.GroupDescription)
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            Startdatum
+            @Html.DisplayNameFor(model => model.GroupStart)
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            Stutdatum
+            @Html.DisplayNameFor(model => model.GroupEnd)
         </dt>
 
         <dd>

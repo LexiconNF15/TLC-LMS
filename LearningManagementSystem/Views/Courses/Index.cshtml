@@ -4,29 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Kurs</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa kurs", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CourseName)
+           @Html.DisplayNameFor(model => model.FirstOrDefault().CourseName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseDescription)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CourseStart)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseStart)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CourseEnd)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CourseEnd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GroupId)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -35,21 +28,15 @@
             @Html.DisplayFor(modelItem => item.CourseName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseDescription)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CourseStart)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CourseEnd)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GroupId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CourseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CourseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CourseId })
+            @Html.ActionLink("Redigera", "Edit", new { id=item.CourseId }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.CourseId }) |
+            @Html.ActionLink("Radera", "Delete", new { id=item.CourseId })
         </td>
     </tr>
 }

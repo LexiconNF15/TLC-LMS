@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Redigera</h2>
+<h2>Grupp</h2>
 
 
 @using (Html.BeginForm())
@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.GroupId)
 
         <div class="form-group">
-            @Html.Label("Gruppnamn", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GroupName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Beskrivning", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GroupDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.GroupDescription, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GroupDescription, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Startdatum", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GroupStart, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GroupStart, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GroupStart, "", new { @class = "text-danger" })
@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Slutdatum", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GroupEnd, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GroupEnd, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GroupEnd, "", new { @class = "text-danger" })
