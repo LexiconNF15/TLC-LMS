@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Models
 {
@@ -38,6 +39,8 @@ namespace LearningManagementSystem.Models
         // GET: Courses/Create
         public ActionResult Create()
         {
+
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName"); 
             return View();
         }
 

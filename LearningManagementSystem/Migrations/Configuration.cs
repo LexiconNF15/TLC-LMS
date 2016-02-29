@@ -31,7 +31,7 @@ namespace LearningManagementSystem.Migrations
                 new Activity {
                     ActivityId = 1 ,
                     ActivityName= "DatabasModellering", 
-                    ActivityDescription= "Blablabla",
+                    ActivityDescription= "Pluralsite: EF6 med Scott Allen",
                     ActivityStart=DateTime.Parse("2016-04-01"),
                     ActivityEnd=DateTime.Parse("2016-08-31"),
                     CourseId = 1,
@@ -39,7 +39,7 @@ namespace LearningManagementSystem.Migrations
                     new Activity {
                     ActivityId = 1 ,
                     ActivityName= "C# Collections", 
-                    ActivityDescription= "Blablabla",
+                    ActivityDescription= "Pluralsite :Collections med Scott Allen",
                     ActivityStart=DateTime.Parse("2016-02-28"),
                     ActivityEnd=DateTime.Parse("2016-03-14"),
                     CourseId = 1,
@@ -47,7 +47,7 @@ namespace LearningManagementSystem.Migrations
                     new Activity {
                     ActivityId = 2 ,
                     ActivityName= "JAVA Enterprise", 
-                    ActivityDescription= "Blablabla",
+                    ActivityDescription= "Collections",
                     ActivityStart=DateTime.Parse("2016-04-01"),
                     ActivityEnd=DateTime.Parse("2016-08-31"),
                     CourseId = 2,
