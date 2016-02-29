@@ -16,8 +16,6 @@
 
     <h4>@Html.DisplayFor(model => model.GroupDescription)</h4>
 
-    <hr />
-
     <dl class="dl-horizontal">
 
 
@@ -37,22 +35,13 @@
             <dd>
                 @Html.DisplayFor(model => model.GroupDescription)
             </dd>*@
+        </dl>
+        <dl>
+                @Html.Label("Period: ")
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GroupStart)
-        </dt>
+                @Html.DisplayFor(model => model.GroupStart) -
 
-        <dd>
-            @Html.DisplayFor(model => model.GroupStart)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GroupEnd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GroupEnd)
-        </dd>
+                @Html.DisplayFor(model => model.GroupEnd)
     </dl> 
     <dl>   
         <dd>
