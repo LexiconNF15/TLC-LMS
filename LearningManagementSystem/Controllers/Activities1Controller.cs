@@ -10,18 +10,18 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Controllers
 {
-    public class ActivitiesController : Controller
+    public class Activities1Controller : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Activities
+        // GET: Activities1
         public ActionResult Index()
         {
-            var activities = db.Activities.Include(a => a.ActivityType).Include(a => a.Course); 
-            return View(db.Activities.ToList());
+            var activities = db.Activities.Include(a => a.ActivityType).Include(a => a.Course);
+            return View(activities.ToList());
         }
 
-        // GET: Activities/Details/5
+        // GET: Activities1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace LearningManagementSystem.Controllers
             return View(activity);
         }
 
-        // GET: Activities/Create
+        // GET: Activities1/Create
         public ActionResult Create()
         {
             ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ActivityTypeId", "ActivityTypeName");
@@ -44,7 +44,7 @@ namespace LearningManagementSystem.Controllers
             return View();
         }
 
-        // POST: Activities/Create
+        // POST: Activities1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +63,7 @@ namespace LearningManagementSystem.Controllers
             return View(activity);
         }
 
-        // GET: Activities/Edit/5
+        // GET: Activities1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace LearningManagementSystem.Controllers
             return View(activity);
         }
 
-        // POST: Activities/Edit/5
+        // POST: Activities1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,10 +93,12 @@ namespace LearningManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ActivityTypeId", "ActivityTypeName", activity.ActivityTypeId);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", activity.CourseId);
             return View(activity);
         }
 
-        // GET: Activities/Delete/5
+        // GET: Activities1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,7 +113,7 @@ namespace LearningManagementSystem.Controllers
             return View(activity);
         }
 
-        // POST: Activities/Delete/5
+        // POST: Activities1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

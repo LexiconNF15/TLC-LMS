@@ -6,21 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LearningManagementSystem.Models;
 
-namespace LearningManagementSystem.Models
+namespace LearningManagementSystem.Controllers
 {
-    public class CoursesController : Controller
+    public class Courses1Controller : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Courses
+        // GET: Courses1
         public ActionResult Index()
         {
             var courses = db.Courses.Include(c => c.Group);
-            return View(db.Courses.ToList());
+            return View(courses.ToList());
         }
 
-        // GET: Courses/Details/5
+        // GET: Courses1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +36,14 @@ namespace LearningManagementSystem.Models
             return View(course);
         }
 
-        // GET: Courses/Create
+        // GET: Courses1/Create
         public ActionResult Create()
         {
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName");
             return View();
         }
 
-        // POST: Courses/Create
+        // POST: Courses1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -54,11 +56,12 @@ namespace LearningManagementSystem.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName", course.GroupId);
             return View(course);
         }
 
-        // GET: Courses/Edit/5
+        // GET: Courses1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,7 +77,7 @@ namespace LearningManagementSystem.Models
             return View(course);
         }
 
-        // POST: Courses/Edit/5
+        // POST: Courses1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -91,7 +94,7 @@ namespace LearningManagementSystem.Models
             return View(course);
         }
 
-        // GET: Courses/Delete/5
+        // GET: Courses1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,7 +109,7 @@ namespace LearningManagementSystem.Models
             return View(course);
         }
 
-        // POST: Courses/Delete/5
+        // POST: Courses1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
