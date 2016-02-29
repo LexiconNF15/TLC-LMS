@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Models
 {
@@ -16,6 +17,7 @@ namespace LearningManagementSystem.Models
         // GET: Courses
         public ActionResult Index()
         {
+            var courses = db.Courses.Include(c => c.Group);
             return View(db.Courses.ToList());
         }
 
@@ -37,6 +39,8 @@ namespace LearningManagementSystem.Models
         // GET: Courses/Create
         public ActionResult Create()
         {
+
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName"); 
             return View();
         }
 
@@ -53,7 +57,7 @@ namespace LearningManagementSystem.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName", course.GroupId);
             return View(course);
         }
 
@@ -69,6 +73,7 @@ namespace LearningManagementSystem.Models
             {
                 return HttpNotFound();
             }
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName", course.GroupId);
             return View(course);
         }
 
@@ -85,6 +90,7 @@ namespace LearningManagementSystem.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName", course.GroupId);
             return View(course);
         }
 
