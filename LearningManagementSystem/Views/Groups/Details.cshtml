@@ -79,7 +79,7 @@
     <div>
         @* Fixa så att gå till lista över tillhörande kurser och deltagare *@
         @Html.ActionLink("Kurser", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
-        @Html.ActionLink("Deltagare", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
+        @*@Html.ActionLink("Deltagare", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })*@
     </div>
 
     @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId }) |

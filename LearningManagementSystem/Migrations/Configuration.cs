@@ -184,6 +184,27 @@ namespace LearningManagementSystem.Migrations
                     GroupId = 2, 
                     FirstName = "Sven", 
                     LastName = "Andersson"
+                } ,
+                new ApplicationUser { 
+                    UserName = "student1@mail.com",
+                    Email = "student1@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Olle", 
+                    LastName = "Person"
+                } ,
+                new ApplicationUser { 
+                    UserName = "student2@mail.com",
+                    Email = "student2@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Anna", 
+                    LastName = "Svensson"
+                } ,
+                new ApplicationUser { 
+                    UserName = "student3@mail.com",
+                    Email = "student3@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Lee", 
+                    LastName = "Stevenson"
                 } 
 
             };
