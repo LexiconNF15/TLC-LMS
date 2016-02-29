@@ -27,6 +27,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ActivityType.ActivityTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityType.ActivityTypeName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ActivityStart)
         </dt>
 
@@ -43,29 +51,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CourseId)
+            @Html.DisplayNameFor(model => model.Course.CourseName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CourseId)
+            @Html.DisplayFor(model => model.Course.CourseName)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ActivityTypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ActivityTypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ActivityType.ActivityTypeName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ActivityType.ActivityTypeName)
-        </dd>
-
+               
     </dl>
 </div>
 <p>
