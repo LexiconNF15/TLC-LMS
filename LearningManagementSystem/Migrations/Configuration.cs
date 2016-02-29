@@ -207,7 +207,6 @@ namespace LearningManagementSystem.Migrations
                     LastName = "Stevenson"
                 } 
 
-
             };
 
             foreach (var u in users)
