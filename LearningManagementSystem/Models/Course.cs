@@ -18,9 +18,11 @@ namespace LearningManagementSystem.Models
         public string CourseDescription { get; set; }
         [Required]
         [Display(Name = "Startdatum")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime CourseStart { get; set; }
         [Required]
         [Display(Name = "Slutdatum")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? CourseEnd { get; set; }
 
         [Display(Name = "Gruppnr")]
