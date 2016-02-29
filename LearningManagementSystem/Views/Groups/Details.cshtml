@@ -4,14 +4,25 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Grupp</h2>
+<h2>@Html.DisplayFor(model => model.GroupName)</h2>
+
+@*<h2>Grupp</h2>*@
 
 
 <div>
-    <h4>Gruppdetaljer</h4>
+
+    @*<h4>Gruppdetaljer</h4>*@
     <hr />
+    
+    <h4>@Html.DisplayFor(model => model.GroupDescription)</h4>
+    
+    <hr />
+
     <dl class="dl-horizontal">
-        <dt>
+
+       
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.GroupName)
         </dt>
 
@@ -25,7 +36,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.GroupDescription)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.GroupStart)
@@ -44,8 +55,14 @@
         </dd>
 
     </dl>
-</div>
-<p>
-    @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId }) |
-    @Html.ActionLink("Tillbaka", "Index")
-</p>
+    </div>
+    <p>
+        <div>
+            @* Fixa så att gå till lista över tillhörande kurser och deltagare *@
+            @Html.ActionLink("Kurser", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" }) 
+            @Html.ActionLink("Deltagare", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
+        </div>
+
+        @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId }) |
+        @Html.ActionLink("Tillbaka", "Index")
+    </p>
