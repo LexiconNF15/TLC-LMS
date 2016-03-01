@@ -4,53 +4,83 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Kurs</h2>
+<h2>@Html.DisplayFor(model => model.CourseName)</h2>
+
+@*<h2>Kurs</h2>*@
 
 <div>
-    <h4>Kursdetaljer</h4>
+    @*<h4>Kursdetaljer</h4>*@
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseName)
-        </dt>
+    <h4>@Html.DisplayFor(model => model.CourseDescription)</h4>
+    <dl>
+        @*<dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseName)
-        </dd>
+        @*<dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CourseDescription)
+            </dd>
 
-        <dt>
-          @Html.DisplayNameFor(model => model.CourseStart)
-        </dt>
+            <dt>
+              @Html.DisplayNameFor(model => model.CourseStart)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseStart)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CourseStart)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseEnd)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseEnd)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseEnd)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CourseEnd)
+            </dd>*@
+   
+    </dl>
+    <dl>
+        @Html.Label("Period: ")
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Group.GroupName)
-        </dt>
+        @Html.DisplayFor(model => model.CourseStart) -
 
-        <dd>
-            @Html.DisplayFor(model => model.Group.GroupName)
-        </dd>
+        @Html.DisplayFor(model => model.CourseEnd)
+    </dl>
+    <dl>
+
+        @Html.Label("Tillhör grupp: ")
+
+        @Html.DisplayFor(model => model.Group.GroupName)
+
 
     </dl>
+    <dl>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Aktivitet</th>
+                    <th>Period</th>
+                </tr>
+
+                @foreach (var activity in Model.Activities)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => activity.ActivityName) </td>
+                        <td>@Html.DisplayFor(modelItem => activity.ActivityStart) - @Html.DisplayFor(modelItem => activity.ActivityEnd )</td>
+                    </tr>
+                }
+
+            </table>
+        </dd>
+
+    </dl> 
 </div>
 <p>
     <div>
