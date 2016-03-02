@@ -14,7 +14,7 @@ namespace LearningManagementSystem.Models
         public string FirstName { get; set; }
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
 
         public virtual Group Group { get; set; }
 

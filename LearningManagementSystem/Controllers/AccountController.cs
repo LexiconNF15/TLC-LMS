@@ -139,6 +139,7 @@ namespace LearningManagementSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //ViewBag.GroupId = new SelectList(Groups, "GroupId", "GroupName"); 
             return View();
         }
 
@@ -151,11 +152,12 @@ namespace LearningManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GroupId = model.GroupId};
                 var result = await UserManager.CreateAsync(user, model.Password);
+                UserManager.AddToRole(user.Id, "Student");
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);   ** avmarked
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -367,7 +369,7 @@ namespace LearningManagementSystem.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

@@ -160,6 +160,20 @@ namespace LearningManagementSystem.Migrations
 
         private static void SeedUsers(LearningManagementSystem.Models.ApplicationDbContext context)
         {
+            var roleStore = new RoleStore<IdentityRole>(context);   //vanligtvis i controllern
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            foreach (string roleName in new[] { "Admin", "Teacher","Student" })
+            {
+
+                if (!context.Roles.Any(r => r.Name == roleName))
+                {
+                    var role = new IdentityRole { Name = roleName };
+                    roleManager.Create(role);
+                    // var result = roleManager.Create(role);
+                }
+
+            }
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
 
@@ -213,6 +227,13 @@ namespace LearningManagementSystem.Migrations
             {
                 userManager.Create(u, "foobar1");
             }
+
+            var teacherUser = userManager.FindByName("admin@lexicon.se");
+            userManager.AddToRole(teacherUser.Id, "Admin");
+            userManager.AddToRole(teacherUser.Id, "Teacher");
+
+            var studentUser = userManager.FindByName("student@mail.com");
+            userManager.AddToRole(studentUser.Id, "Student");
         }
 
     }
