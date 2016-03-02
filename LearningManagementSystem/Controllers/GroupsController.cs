@@ -10,6 +10,7 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Controllers
 {
+    [Authorize]
     public class GroupsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -59,6 +60,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Groups/Edit/5
+        [Authorize(Roles = "Admin, Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

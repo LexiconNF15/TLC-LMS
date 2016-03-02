@@ -10,6 +10,7 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Models
 {
+    [Authorize]
     public class CoursesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

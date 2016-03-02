@@ -7,30 +7,30 @@
 <h2>Grupper</h2>
 
 @*<p>
-    @Html.ActionLink("Skapa grupp", "Create")
-    @Html.ActionLink("Skapa grupp", "Create", new { @class = "btn btn-primary", @style = "color:white" })
-</p>*@ 
+        @Html.ActionLink("Skapa grupp", "Create")
+        @Html.ActionLink("Skapa grupp", "Create", new { @class = "btn btn-primary", @style = "color:white" })
+    </p>*@
 
 <p>
     <input type="button" value="Skapa grupp" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Create","Groups")' " />
 </p>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().GroupName)
-            </th>
-            @*<th>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().GroupName)
+        </th>
+        @*<th>
                 @Html.DisplayNameFor(model => model.GroupDescription)
             </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().GroupStart)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().GroupEnd)
-            </th>
-            <th></th>
-        </tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().GroupStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().GroupEnd)
+        </th>
+        <th></th>
+    </tr>
 
     @foreach (var item in Model)
     {
@@ -39,8 +39,8 @@
                 @Html.DisplayFor(modelItem => item.GroupName)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.GroupDescription)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.GroupDescription)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.GroupStart)
             </td>
@@ -48,9 +48,18 @@
                 @Html.DisplayFor(modelItem => item.GroupEnd)
             </td>
             <td>
-                @Html.ActionLink("Redigera", "Edit", new { id = item.GroupId }) |
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Teacher"))
+                    {
+                        @Html.ActionLink("Redigera", "Edit", new { id = item.GroupId })
+                    }
+                }
+                |
+                @*@Html.ActionLink("Redigera", "Edit", new { id = item.GroupId })*@
                 @Html.ActionLink("Detailjer", "Details", new { id = item.GroupId }) |
                 @Html.ActionLink("Radera", "Delete", new { id = item.GroupId })
+
             </td>
         </tr>
     }

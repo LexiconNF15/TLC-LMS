@@ -139,7 +139,8 @@ namespace LearningManagementSystem.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, Teacher")]
         public ActionResult Register()
         {
             ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName");
@@ -405,7 +406,8 @@ namespace LearningManagementSystem.Controllers
 
         //
         // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, Teacher")]
         public ActionResult ExternalLoginFailure()
         {
             return View();
