@@ -79,7 +79,7 @@ namespace LearningManagementSystem.Models
         public int? GroupId { get; set; }
 
         [Display(Name = "Roll")]
-        public int RoleId { get; set; }
+        public string Role { get; set; }
         
         [Required]
         [StringLength(100, ErrorMessage = " {0} måste vara minst {2} tecken långt.", MinimumLength = 6)]

@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LearningManagementSystem.Models;
+using System.Collections.Generic;
+
 
 namespace LearningManagementSystem.Controllers
 {
@@ -17,6 +19,7 @@ namespace LearningManagementSystem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -139,7 +142,8 @@ namespace LearningManagementSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            //ViewBag.GroupId = new SelectList(Groups, "GroupId", "GroupName"); 
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName");
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");
             return View();
         }
 
@@ -154,9 +158,9 @@ namespace LearningManagementSystem.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GroupId = model.GroupId};
                 var result = await UserManager.CreateAsync(user, model.Password);
-                UserManager.AddToRole(user.Id, "Student");
                 if (result.Succeeded)
                 {
+                UserManager.AddToRole(user.Id, model.Role);
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);   ** avmarked
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -171,6 +175,8 @@ namespace LearningManagementSystem.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName");
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");
             return View(model);
         }
 

@@ -103,21 +103,21 @@ namespace LearningManagementSystem.Migrations
                  new Course {
                     CourseId = 3,
                     CourseName= "Sharepoint intro", 
-                    CourseDescription= "Introduktion till SHarepoint grundläggande nivå",
+                    CourseDescription= "Introduktion till Sharepoint grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-03-01"),
                     CourseEnd=DateTime.Parse("2016-05-31"),
                     GroupId = 3},
                 new Course {
                     CourseId = 4,
                     CourseName= "JAVA intro", 
-                    CourseDescription= "Introduktion till JAVA påbyggnads nivå",
+                    CourseDescription= "Introduktion till JAVA påbyggnadsnivå",
                     CourseStart=DateTime.Parse("2016-03-01"),
                     CourseEnd=DateTime.Parse("2016-04-24"),
                     GroupId = 2},
                  new Course {
                     CourseId = 5,
                     CourseName= "Sharepoint intro", 
-                    CourseDescription= "Introduktion till Sharepoint påbyggnads nivå",
+                    CourseDescription= "Introduktion till Sharepoint påbyggnadsnivå",
                     CourseStart=DateTime.Parse("2016-04-01"),
                     CourseEnd=DateTime.Parse("2016-08-31"),
                     GroupId = 3},
@@ -136,21 +136,33 @@ namespace LearningManagementSystem.Migrations
                 new Group {
                     GroupId = 1,
                     GroupName= ".NET Februari",
-                    GroupDescription = "En kurs innehållande .Net, C# och Angular JS.", 
+                    GroupDescription = "Innehåller:.Net, C# och Angular JS.", 
                     GroupStart=DateTime.Parse("2016-02-24"),
                     GroupEnd=DateTime.Parse("2016-03-24")},
                 new Group {
                     GroupId = 2,
-                    GroupName= "JAVA Februari",
-                    GroupDescription = "En kurs innehållande JAVA Enterprise, JavaScript, Oracle.", 
+                    GroupName= "JAVA Mars",
+                    GroupDescription = "Innehåller:JAVA Enterprise, JavaScript, Oracle.", 
                     GroupStart=DateTime.Parse("2016-02-24"),
                     GroupEnd=DateTime.Parse("2016-04-24")},
                 new Group {
                     GroupId = 3,
                     GroupName= "IT-Tekniker Mars",
-                    GroupDescription = "En kurs innehållande Sharepoint, Office365. ITIL.", 
+                    GroupDescription = "Office365. ITIL, ISTQB Foundation", 
                     GroupStart=DateTime.Parse("2016-03-01"),
-                    GroupEnd=DateTime.Parse("2016-08-31")}                  
+                    GroupEnd=DateTime.Parse("2016-08-31")}, 
+                new Group {
+                    GroupId = 4,
+                    GroupName= "Sharepoint-Tekniker April",
+                    GroupDescription = "Innehåller: Sharepoint, Office365, ITIL.", 
+                    GroupStart=DateTime.Parse("2016-04-01"),
+                    GroupEnd=DateTime.Parse("2016-06-30")},
+                new Group {
+                    GroupId = 5,
+                    GroupName= ".NET Juni",
+                    GroupDescription = "Innehåller: Sharepoint, Office365. ITIL.", 
+                    GroupStart=DateTime.Parse("2016-06-01"),
+                    GroupEnd=DateTime.Parse("2016-10-30")}, 
                      
             };
 
@@ -186,8 +198,8 @@ namespace LearningManagementSystem.Migrations
                     LastName = "Andersson",
                 },  
                 new ApplicationUser { 
-                    UserName = "user@mail.com", 
-                    Email = "user@mail.com", 
+                    UserName = "teacher@mail.com", 
+                    Email = "teacher@mail.com", 
                     GroupId = 1, 
                     FirstName = "Ulrika",
                     LastName = "Svensson",
@@ -197,28 +209,56 @@ namespace LearningManagementSystem.Migrations
                     Email = "student@mail.com",
                     GroupId = 2, 
                     FirstName = "Sven", 
-                    LastName = "Andersson"
+                    LastName = "Andersson",
                 } ,
                 new ApplicationUser { 
-                    UserName = "student1@mail.com",
-                    Email = "student1@mail.com",
+                    UserName = "olle@mail.com",
+                    Email = "olle@mail.com",
                     GroupId = 2, 
                     FirstName = "Olle", 
-                    LastName = "Person"
+                    LastName = "Person",
                 } ,
                 new ApplicationUser { 
-                    UserName = "student2@mail.com",
-                    Email = "student2@mail.com",
+                    UserName = "anna@mail.com",
+                    Email = "anna@mail.com",
                     GroupId = 2, 
                     FirstName = "Anna", 
-                    LastName = "Svensson"
+                    LastName = "Svensson",
                 } ,
                 new ApplicationUser { 
-                    UserName = "student3@mail.com",
-                    Email = "student3@mail.com",
+                    UserName = "lee@mail.com",
+                    Email = "lee@mail.com",
                     GroupId = 2, 
                     FirstName = "Lee", 
                     LastName = "Stevenson"
+                }  ,
+                 new ApplicationUser { 
+                    UserName = "adrian@mail.com",
+                    Email = "adrian@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Adrian", 
+                    LastName = "Lejon",
+                } ,
+                new ApplicationUser { 
+                    UserName = "oscar@mail.com",
+                    Email = "oscar@mail.com",
+                    GroupId = 4, 
+                    FirstName = "Oscar", 
+                    LastName = "Von Shinkel",
+                } ,
+                new ApplicationUser { 
+                    UserName = "anders@mail.com",
+                    Email = "anders@mail.com",
+                    GroupId = 4, 
+                    FirstName = "Anders", 
+                    LastName = "Warg",
+                } ,
+                new ApplicationUser { 
+                    UserName = "susanne@mail.com",
+                    Email = "susanne@mail.com",
+                    GroupId = 5, 
+                    FirstName = "Susanne", 
+                    LastName = "Holmgren",
                 } 
 
             };
@@ -228,12 +268,39 @@ namespace LearningManagementSystem.Migrations
                 userManager.Create(u, "foobar1");
             }
 
-            var teacherUser = userManager.FindByName("admin@lexicon.se");
+            var adminUser = userManager.FindByName("admin@lexicon.se");
+            userManager.AddToRole(adminUser.Id, "Admin");
+            userManager.AddToRole(adminUser.Id, "Teacher");
+
+            var teacherUser = userManager.FindByName("teacher@mail.com");
             userManager.AddToRole(teacherUser.Id, "Admin");
             userManager.AddToRole(teacherUser.Id, "Teacher");
 
             var studentUser = userManager.FindByName("student@mail.com");
             userManager.AddToRole(studentUser.Id, "Student");
+
+             var studentUser1 = userManager.FindByName("olle@mail.com");
+            userManager.AddToRole(studentUser1.Id, "Student");
+
+             var studentUser2 = userManager.FindByName("lee@mail.com");
+            userManager.AddToRole(studentUser2.Id, "Student");
+
+            var studentUser3 = userManager.FindByName("anna@mail.com");
+            userManager.AddToRole(studentUser3.Id, "Student");
+
+            var studentUser4 = userManager.FindByName("oscar@mail.com");
+            userManager.AddToRole(studentUser4.Id, "Student");
+
+            var studentUser5 = userManager.FindByName("adrian@mail.com");
+            userManager.AddToRole(studentUser5.Id, "Student");
+
+            var studentUser6 = userManager.FindByName("anders@mail.com");
+            userManager.AddToRole(studentUser6.Id, "Student");
+
+            var studentUser7 = userManager.FindByName("susanne@mail.com");
+            userManager.AddToRole(studentUser7.Id, "Student");
+
+           
         }
 
     }
