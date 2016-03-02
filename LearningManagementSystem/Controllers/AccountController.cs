@@ -19,7 +19,7 @@ namespace LearningManagementSystem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();  ///Tillagt så att vi får DB.context för våra listor( dropdown) se t.ex /Account/Register samt Register.cshtml
 
         public AccountController()
         {
@@ -160,8 +160,8 @@ namespace LearningManagementSystem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                UserManager.AddToRole(user.Id, model.Role);
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);   ** avmarked
+                UserManager.AddToRole(user.Id, model.Role);  // Koppling av roll till användaren sker här!
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);   ** OBS! Avmarkerad så ingen automatisk inloggning sker på den nyskapade användaren
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

@@ -4,37 +4,40 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Aktivitet</h2>
+<h2>@Html.DisplayFor(model => model.ActivityName)</h2>
 
 <div>
-    <h4>Aktivitetsdetaljer</h4>
+    @*<h4>Aktivitetsdetaljer</h4>*@
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <h4>@Html.DisplayFor(model => model.ActivityDescription)</h4>
+    @*<dl class="dl-horizontal">*@
+   <dl>
+        @*<dt>
             @Html.DisplayNameFor(model => model.ActivityName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ActivityName)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.ActivityDescription)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ActivityDescription)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.ActivityType.ActivityTypeName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.ActivityType.ActivityTypeName)
-        </dd>
+        </dd>*@
 
-        <dt>
+
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.ActivityStart)
         </dt>
 
@@ -56,8 +59,28 @@
 
         <dd>
             @Html.DisplayFor(model => model.Course.CourseName)
-        </dd>
-               
+        </dd>*@
+
+    </dl>
+    <dl>
+        @Html.Label("Typ av aktivitet: ")
+        @Html.DisplayFor(model => model.ActivityType.ActivityTypeName)
+
+    </dl>
+    <dl>
+        @Html.Label("Period: ")
+
+        @Html.DisplayFor(model => model.ActivityStart) -
+
+        @Html.DisplayFor(model => model.ActivityEnd)
+    </dl>
+    <dl>
+
+        @Html.Label("Tillhör kurs: ")
+
+        @Html.DisplayFor(model => model.Course.CourseName)
+
+
     </dl>
 </div>
 <p>
