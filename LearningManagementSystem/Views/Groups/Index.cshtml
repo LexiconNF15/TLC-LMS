@@ -6,8 +6,13 @@
 
 <h2>Grupper</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Skapa grupp", "Create")
+    @Html.ActionLink("Skapa grupp", "Create", new { @class = "btn btn-primary", @style = "color:white" })
+</p>*@ 
+
+<p>
+    <input type="button" value="Skapa grupp" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Create","Groups")' " />
 </p>
 
     <table class="table">

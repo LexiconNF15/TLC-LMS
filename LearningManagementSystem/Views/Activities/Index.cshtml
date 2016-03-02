@@ -6,9 +6,14 @@
 
 <h2>Aktivitet</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Skapa aktivitet", "Create")
+</p>*@
+
+<p>
+    <input type="button" value="Skapa aktivitet" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Create","Activities")' " />
 </p>
+
 <table class="table">
     <tr>
         <th>
