@@ -38,6 +38,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Activities/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ActivityTypeId", "ActivityTypeName");
@@ -65,6 +66,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Activities/Edit/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -98,6 +100,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Activities/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

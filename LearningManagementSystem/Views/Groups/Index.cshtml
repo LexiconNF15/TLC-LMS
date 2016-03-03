@@ -5,12 +5,6 @@
 }
 
 <h2>Grupper</h2>
-
-@*<p>
-        @Html.ActionLink("Skapa grupp", "Create")
-        @Html.ActionLink("Skapa grupp", "Create", new { @class = "btn btn-primary", @style = "color:white" })
-    </p>*@
-
 <p>
     <input type="button" value="Skapa grupp" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Create","Groups")' " />
 </p>
@@ -48,18 +42,9 @@
                 @Html.DisplayFor(modelItem => item.GroupEnd)
             </td>
             <td>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    if (User.IsInRole("Teacher"))
-                    {
-                        @Html.ActionLink("Redigera", "Edit", new { id = item.GroupId })
-                    }
-                }
-                |
-                @*@Html.ActionLink("Redigera", "Edit", new { id = item.GroupId })*@
+                @Html.ActionLink("Redigera", "Edit", new { id = item.GroupId }) |
                 @Html.ActionLink("Detailjer", "Details", new { id = item.GroupId }) |
                 @Html.ActionLink("Radera", "Delete", new { id = item.GroupId })
-
             </td>
         </tr>
     }

@@ -10,7 +10,7 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Models
 {
-    [Authorize]
+    [Authorize] //[Authorize(Roles = "Teacher")]
     public class CoursesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -38,6 +38,7 @@ namespace LearningManagementSystem.Models
         }
 
         // GET: Courses/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
 
@@ -63,6 +64,7 @@ namespace LearningManagementSystem.Models
         }
 
         // GET: Courses/Edit/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,6 +98,7 @@ namespace LearningManagementSystem.Models
         }
 
         // GET: Courses/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

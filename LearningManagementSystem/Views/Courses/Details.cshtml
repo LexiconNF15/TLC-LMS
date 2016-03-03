@@ -87,6 +87,14 @@
         @Html.ActionLink("Aktiviteter", "Index", "Activities", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
     </div>
 
-    @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |
+    @if (User.Identity.IsAuthenticated)
+    {
+    if (User.IsInRole("Teacher"))
+    {
+    @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId })
+    }
+    }
+
+   @* @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |*@
     @Html.ActionLink("Tillbaka", "Index")
 </p>
