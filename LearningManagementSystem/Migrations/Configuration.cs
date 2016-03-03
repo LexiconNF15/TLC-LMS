@@ -175,7 +175,7 @@ namespace LearningManagementSystem.Migrations
             var roleStore = new RoleStore<IdentityRole>(context);   //vanligtvis i controllern
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            foreach (string roleName in new[] { "Admin", "Teacher","Student" })
+            foreach (string roleName in new[] {"Teacher","Student" })
             {
 
                 if (!context.Roles.Any(r => r.Name == roleName))
@@ -190,13 +190,6 @@ namespace LearningManagementSystem.Migrations
             var userManager = new UserManager<ApplicationUser>(userStore);
 
             var users = new List<ApplicationUser> {
-                new ApplicationUser { 
-                    UserName = "admin@lexicon.se", 
-                    Email = "admin@lexicon.se", 
-                    GroupId = 1, 
-                    FirstName = "Anna", 
-                    LastName = "Andersson",
-                },  
                 new ApplicationUser { 
                     UserName = "teacher@mail.com", 
                     Email = "teacher@mail.com", 
@@ -268,12 +261,8 @@ namespace LearningManagementSystem.Migrations
                 userManager.Create(u, "foobar1");
             }
 
-            var adminUser = userManager.FindByName("admin@lexicon.se");
-            userManager.AddToRole(adminUser.Id, "Admin");
-            userManager.AddToRole(adminUser.Id, "Teacher");
-
+         
             var teacherUser = userManager.FindByName("teacher@mail.com");
-            userManager.AddToRole(teacherUser.Id, "Admin");
             userManager.AddToRole(teacherUser.Id, "Teacher");
 
             var studentUser = userManager.FindByName("student@mail.com");

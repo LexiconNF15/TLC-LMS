@@ -1,0 +1,38 @@
+﻿@model IEnumerable<LearningManagementSystem.Models.ActivityType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Aktivitetstyp</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<p>
+    <input type="button" value="Skapa aktivitetstyp" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Create","Activitytypes")' " />
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivityTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Redigera", "Edit", new { id=item.ActivityTypeId }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.ActivityTypeId }) |
+            @Html.ActionLink("Radera", "Delete", new { id=item.ActivityTypeId })
+        </td>
+    </tr>
+}
+
+</table>
