@@ -8,9 +8,8 @@ namespace LearningManagementSystem.Models
 {
     public class ActivityType
     {
-        [Display(Name = "Activitetstypid")]
         public int ActivityTypeId { get; set; }
-         [Display(Name = "Aktivitetstyp")]
+        [Display(Name = "Aktivitetstyp")]
         public string ActivityTypeName { get; set; }
 
         public virtual ICollection<Activity> Activity { get; set; }
