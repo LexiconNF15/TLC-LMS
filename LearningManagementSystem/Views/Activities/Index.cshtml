@@ -58,9 +58,28 @@
             @Html.DisplayFor(modelItem => item.ActivityTypeId)
         </td>*@
         <td>
-            @Html.ActionLink("Redigera", "Edit", new { id=item.ActivityId }) |
-            @Html.ActionLink("Detaljer", "Details", new { id=item.ActivityId }) |
-            @Html.ActionLink("Radera", "Delete", new { id=item.ActivityId })
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Teacher"))
+                {
+                    @Html.ActionLink("Redigera", "Edit", new { id = item.ActivityId })
+                }
+            }
+            
+            |
+
+            @*@Html.ActionLink("Redigera", "Edit", new { id = item.ActivityId }) |*@
+            @Html.ActionLink("Detaljer", "Details", new { id = item.ActivityId }) |
+            @*@Html.ActionLink("Radera", "Delete", new { id = item.ActivityId })*@
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Teacher"))
+                {
+                    @Html.ActionLink("Radera", "Delete", new { id = item.ActivityId })
+                }
+            }
+            
         </td>
     </tr>
 }
