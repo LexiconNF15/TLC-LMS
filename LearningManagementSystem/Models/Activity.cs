@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LearningManagementSystem.Models
 {
-    public class Activity
+    public class Activity : IValidatableObject
     {
         public int ActivityId { get; set; }
         [Required]
@@ -32,7 +32,17 @@ namespace LearningManagementSystem.Models
         public virtual Course Course { get; set; }
 
 
-       
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (ActivityEnd < ActivityStart)
+            {
+                yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
+            }
+            if (ActivityStart < DateTime.Now)
+            {
+                yield return new ValidationResult("Startdatum har passerat!");
+            }
+        }
 
     }
     
