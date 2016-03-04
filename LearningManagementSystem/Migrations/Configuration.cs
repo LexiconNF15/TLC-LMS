@@ -37,15 +37,15 @@ namespace LearningManagementSystem.Migrations
                     CourseId = 1,
                     ActivityTypeId = 1},
                     new Activity {
-                    ActivityId = 1 ,
+                    ActivityId = 2 ,
                     ActivityName= "C# Collections", 
                     ActivityDescription= "Pluralsite :Collections med Scott Allen",
-                    ActivityStart=DateTime.Parse("2016-02-28"),
-                    ActivityEnd=DateTime.Parse("2016-03-14"),
+                    ActivityStart=DateTime.Parse("2016-03-28"),
+                    ActivityEnd=DateTime.Parse("2016-04-14"),
                     CourseId = 1,
                     ActivityTypeId = 1},
                     new Activity {
-                    ActivityId = 2 ,
+                    ActivityId = 3,
                     ActivityName= "JAVA Enterprise", 
                     ActivityDescription= "Collections",
                     ActivityStart=DateTime.Parse("2016-04-01"),
@@ -90,35 +90,35 @@ namespace LearningManagementSystem.Migrations
                     CourseId = 1,
                     CourseName= "C# intro", 
                     CourseDescription= "Introduktion till C# grundläggande nivå",
-                    CourseStart=DateTime.Parse("2016-03-01"),
+                    CourseStart=DateTime.Parse("2016-03-25"),
                     CourseEnd=DateTime.Parse("2016-04-15"),
                     GroupId = 1},
                 new Course {
                     CourseId = 2,
                     CourseName= "JAVA intro", 
                     CourseDescription= "Introduktion till JAVA grundläggande nivå",
-                    CourseStart=DateTime.Parse("2016-02-25"),
-                    CourseEnd=DateTime.Parse("2016-03-25"),
+                    CourseStart=DateTime.Parse("2016-03-25"),
+                    CourseEnd=DateTime.Parse("2016-04-25"),
                     GroupId = 2},
                  new Course {
                     CourseId = 3,
                     CourseName= "Sharepoint intro", 
                     CourseDescription= "Introduktion till Sharepoint grundläggande nivå",
-                    CourseStart=DateTime.Parse("2016-03-01"),
+                    CourseStart=DateTime.Parse("2016-04-01"),
                     CourseEnd=DateTime.Parse("2016-05-31"),
                     GroupId = 3},
                 new Course {
                     CourseId = 4,
                     CourseName= "JAVA intro", 
                     CourseDescription= "Introduktion till JAVA påbyggnadsnivå",
-                    CourseStart=DateTime.Parse("2016-03-01"),
-                    CourseEnd=DateTime.Parse("2016-04-24"),
+                    CourseStart=DateTime.Parse("2016-04-01"),
+                    CourseEnd=DateTime.Parse("2016-06-24"),
                     GroupId = 2},
                  new Course {
                     CourseId = 5,
                     CourseName= "Sharepoint intro", 
                     CourseDescription= "Introduktion till Sharepoint påbyggnadsnivå",
-                    CourseStart=DateTime.Parse("2016-04-01"),
+                    CourseStart=DateTime.Parse("2016-05-01"),
                     CourseEnd=DateTime.Parse("2016-08-31"),
                     GroupId = 3},
                               
@@ -137,19 +137,19 @@ namespace LearningManagementSystem.Migrations
                     GroupId = 1,
                     GroupName= ".NET Februari",
                     GroupDescription = "Innehåller:.Net, C# och Angular JS.", 
-                    GroupStart=DateTime.Parse("2016-02-24"),
-                    GroupEnd=DateTime.Parse("2016-03-24")},
+                    GroupStart=DateTime.Parse("2016-03-24"),
+                    GroupEnd=DateTime.Parse("2016-04-24")},
                 new Group {
                     GroupId = 2,
                     GroupName= "JAVA Mars",
                     GroupDescription = "Innehåller:JAVA Enterprise, JavaScript, Oracle.", 
-                    GroupStart=DateTime.Parse("2016-02-24"),
-                    GroupEnd=DateTime.Parse("2016-04-24")},
+                    GroupStart=DateTime.Parse("2016-03-24"),
+                    GroupEnd=DateTime.Parse("2016-05-24")},
                 new Group {
                     GroupId = 3,
                     GroupName= "IT-Tekniker Mars",
                     GroupDescription = "Office365. ITIL, ISTQB Foundation", 
-                    GroupStart=DateTime.Parse("2016-03-01"),
+                    GroupStart=DateTime.Parse("2016-04-01"),
                     GroupEnd=DateTime.Parse("2016-08-31")}, 
                 new Group {
                     GroupId = 4,
@@ -175,7 +175,7 @@ namespace LearningManagementSystem.Migrations
             var roleStore = new RoleStore<IdentityRole>(context);   //vanligtvis i controllern
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            foreach (string roleName in new[] {"Teacher","Student" })
+            foreach (string roleName in new[] {"Teacher","Student"})
             {
 
                 if (!context.Roles.Any(r => r.Name == roleName))
@@ -193,7 +193,7 @@ namespace LearningManagementSystem.Migrations
                 new ApplicationUser { 
                     UserName = "teacher@mail.com", 
                     Email = "teacher@mail.com", 
-                    GroupId = 1, 
+                    //GroupId = null, 
                     FirstName = "Ulrika",
                     LastName = "Svensson",
                 },
@@ -261,7 +261,7 @@ namespace LearningManagementSystem.Migrations
                 userManager.Create(u, "foobar1");
             }
 
-         
+
             var teacherUser = userManager.FindByName("teacher@mail.com");
             userManager.AddToRole(teacherUser.Id, "Teacher");
 
