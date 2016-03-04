@@ -60,7 +60,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Groups/Edit/5
-        [Authorize(Roles = "Admin, Teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

@@ -160,6 +160,11 @@ namespace LearningManagementSystem.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
                 var result = await UserManager.CreateAsync(user, model.Password);
+                if (model.Role == "Teacher")
+                {
+                    model.GroupId = null;
+                }
+
                 if (result.Succeeded)
                 {
                 UserManager.AddToRole(user.Id, model.Role);  // Koppling av roll till användaren sker här!

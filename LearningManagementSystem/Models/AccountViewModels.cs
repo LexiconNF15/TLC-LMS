@@ -75,12 +75,12 @@ namespace LearningManagementSystem.Models
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
-        [Display(Name = "Gruppnr")]
-        public int? GroupId { get; set; }
-
         [Display(Name = "Roll")]
         public string Role { get; set; }
         
+        [Display(Name = "Gruppnr")]
+        public int? GroupId { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = " {0} måste vara minst {2} tecken långt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
