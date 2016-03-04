@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LearningManagementSystem.Models;
 using System.Collections.Generic;
+using System.Net;
 
 
 namespace LearningManagementSystem.Controllers
@@ -416,6 +417,48 @@ namespace LearningManagementSystem.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+
+        // GET: Account/Index
+        [Authorize(Roles = "Teacher")]
+        public ActionResult Index()
+        {
+             return View(db.Users.ToList());     // Lsta på användare
+        }
+
+        // GET: Account/Delete
+        [Authorize(Roles="Teacher")]
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = UserManager.FindById(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Account/Delete/
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            var user = UserManager.FindById(id);
+            if (user != null)
+            {
+                    UserManager.Delete(user);
+            }
+               
+            //else
+            //{
+            //    message = "det gick inte att ta bort användaren";
+            //}
+            //return RedirectToAction("User", new { Message = message });
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
