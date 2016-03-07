@@ -112,9 +112,32 @@ namespace LearningManagementSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Group group = db.Groups.Find(id);
-            db.Groups.Remove(group);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            string faultmessage = null;
+
+            if ((group.Courses.Count() != 0) || (group.Users.Count() != 0)) {
+
+                faultmessage = "Gruppen kan ej tas bort då den innehåller kopplingar till användare eller kurs.";
+
+                TempData["Faultmessage"]=faultmessage;
+                return RedirectToAction("Index");
+
+               }
+            else
+       
+           // try
+            {
+                db.Groups.Remove(group);
+                db.SaveChanges();
+
+                faultmessage = "Gruppen borttagen.";
+
+                TempData["Faultmessage"] = faultmessage;
+                return RedirectToAction("Index");
+           }
+            //catch
+            //{
+            //    return RedirectToAction("Faultydeleate");
+            //}  
         }
 
         protected override void Dispose(bool disposing)
