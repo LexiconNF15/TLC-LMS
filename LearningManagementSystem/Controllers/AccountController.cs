@@ -104,7 +104,7 @@ namespace LearningManagementSystem.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Felaktiga inloggning.");
+                    ModelState.AddModelError("", "Felaktig inloggning.");
                     return View(model);
             }
         }

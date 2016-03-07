@@ -37,6 +37,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Groups/Create
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             return View();
