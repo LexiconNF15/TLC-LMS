@@ -68,7 +68,14 @@
     <div>
         @* Fixa så att gå till lista över tillhörande kurser och deltagare *@
         @Html.ActionLink("Kurser", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
-        @*@Html.ActionLink("Deltagare", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })*@
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Teacher"))
+            {
+                @Html.ActionLink("Användare", "Index", "Account", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
+            }
+        }
     </div>
 
     @if (User.Identity.IsAuthenticated)
