@@ -432,6 +432,49 @@ namespace LearningManagementSystem.Controllers
         {
             return View();
         }
+        // GET: Account/Edit/5
+        [Authorize(Roles = "Teacher")]
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = UserManager.FindById(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName");
+            ViewBag.Role = new SelectList(db.Roles, "Name", "Name");
+            ViewBag.CustomMessage = null;
+            return View(user);
+        }
+
+        // POST: Account/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Teacher")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ApplicationUser model, string id)
+        {
+            if (ModelState.IsValid)
+            {
+               ApplicationUser u = UserManager.FindById(model.Id);
+               u.UserName = model.Email;
+               u.Email = model.Email;
+               u.FirstName = model.FirstName; 
+               u.LastName = model.LastName; 
+               u.GroupId = model.GroupId;
+               u.PhoneNumber = model.PhoneNumber;
+               UserManager.Update(u);
+            return RedirectToAction("Index");
+             }
+   
+        return View();
+        }
+         
 
         // GET: Account/Index
         [Authorize(Roles = "Teacher")]
@@ -459,20 +502,24 @@ namespace LearningManagementSystem.Controllers
         // POST: Account/Delete/
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult DeleteConfirmed(string id)
         {
+            string message = null;       
             var user = UserManager.FindById(id);
             if (user != null)
             {
                     UserManager.Delete(user);
+                    message = "Användaren är borttagen"; 
             }
-               
-            //else
-            //{
-            //    message = "det gick inte att ta bort användaren";
-            //}
-            //return RedirectToAction("User", new { Message = message });
+
+            else
+            {
+                 message = "Det gick inte att ta bort användaren"; // behöver fixas så att meddelandet kommer upp på skärmen.
+            }
+            TempData["CustomMessage"]=message;
             return RedirectToAction("Index");
+         
         }
 
         protected override void Dispose(bool disposing)
