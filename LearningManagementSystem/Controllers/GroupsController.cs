@@ -81,6 +81,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit([Bind(Include = "GroupId,GroupName,GroupDescription,GroupStart,GroupEnd")] Group group)
         {
             if (ModelState.IsValid)
@@ -93,6 +94,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Groups/Delete/5
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +110,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // POST: Groups/Delete/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

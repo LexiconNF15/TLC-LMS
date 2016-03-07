@@ -51,6 +51,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create([Bind(Include = "ActivityId,ActivityName,ActivityDescription,ActivityStart,ActivityEnd,CourseId,ActivityTypeId")] Activity activity)
         {
             if (ModelState.IsValid)
@@ -88,6 +89,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit([Bind(Include = "ActivityId,ActivityName,ActivityDescription,ActivityStart,ActivityEnd,CourseId,ActivityTypeId")] Activity activity)
         {
             if (ModelState.IsValid)
@@ -118,6 +120,7 @@ namespace LearningManagementSystem.Controllers
         // POST: Activities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult DeleteConfirmed(int id)
         {
             Activity activity = db.Activities.Find(id);

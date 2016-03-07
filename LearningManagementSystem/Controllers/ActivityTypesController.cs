@@ -36,6 +36,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: ActivityTypes/Create
+         [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +47,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create([Bind(Include = "ActivityTypeId,ActivityTypeName")] ActivityType activityType)
         {
             if (ModelState.IsValid)
@@ -59,6 +61,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: ActivityTypes/Edit/5
+         [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +81,7 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit([Bind(Include = "ActivityTypeId,ActivityTypeName")] ActivityType activityType)
         {
             if (ModelState.IsValid)
@@ -90,6 +94,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: ActivityTypes/Delete/5
+         [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +112,7 @@ namespace LearningManagementSystem.Controllers
         // POST: ActivityTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult DeleteConfirmed(int id)
         {
             ActivityType activityType = db.ActivityTypes.Find(id);

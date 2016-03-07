@@ -51,6 +51,7 @@ namespace LearningManagementSystem.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create([Bind(Include = "CourseId,CourseName,CourseDescription,CourseStart,CourseEnd,GroupId,")] Course course)
         {
             if (ModelState.IsValid)
@@ -85,6 +86,7 @@ namespace LearningManagementSystem.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit([Bind(Include = "CourseId,CourseName,CourseDescription,CourseStart,CourseEnd,GroupId")] Course course)
         {
             if (ModelState.IsValid)

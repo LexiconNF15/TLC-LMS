@@ -106,21 +106,21 @@ namespace LearningManagementSystem.Migrations
                     CourseDescription= "Introduktion till Sharepoint grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-04-01"),
                     CourseEnd=DateTime.Parse("2016-05-31"),
-                    GroupId = 3},
+                    GroupId = 4},
                 new Course {
                     CourseId = 4,
-                    CourseName= "JAVA intro", 
+                    CourseName= "JAVA Fortsättning", 
                     CourseDescription= "Introduktion till JAVA påbyggnadsnivå",
                     CourseStart=DateTime.Parse("2016-04-01"),
                     CourseEnd=DateTime.Parse("2016-06-24"),
                     GroupId = 2},
                  new Course {
                     CourseId = 5,
-                    CourseName= "Sharepoint intro", 
+                    CourseName= "Sharepoint fortsättning", 
                     CourseDescription= "Introduktion till Sharepoint påbyggnadsnivå",
                     CourseStart=DateTime.Parse("2016-05-01"),
                     CourseEnd=DateTime.Parse("2016-08-31"),
-                    GroupId = 3},
+                    GroupId = 4},
                               
              };
             courses.ForEach(c => context.Courses.AddOrUpdate(c));
