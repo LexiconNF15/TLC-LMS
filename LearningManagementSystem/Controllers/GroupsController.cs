@@ -112,6 +112,10 @@ namespace LearningManagementSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Group group = db.Groups.Find(id);
+            //if (group.Users.Count() != 0;) {
+            //    group.Courses.FirstOrDefault().Activities.fi
+
+            //}
             db.Groups.Remove(group);
             db.SaveChanges();
             return RedirectToAction("Index");

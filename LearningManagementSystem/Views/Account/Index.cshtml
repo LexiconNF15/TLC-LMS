@@ -6,10 +6,19 @@
 
 <h2>Användare</h2>
 
+
 <p>
     @*@Html.ActionLink("Skapa ny användare", "Register")*@
     <input type="button" value="Skapa ny användare" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Register","Account")' " />
 </p>
+
+
+<h5 class="text-danger">
+   
+    @TempData["CustomMessage"]
+
+</h5> 
+
 <table class="table">
     <tr>
         <th>
