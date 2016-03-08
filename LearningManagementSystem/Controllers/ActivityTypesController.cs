@@ -10,6 +10,7 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Controllers
 {
+    [Authorize]
     public class ActivityTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -36,7 +37,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: ActivityTypes/Create
-         [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             return View();
@@ -61,7 +62,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: ActivityTypes/Edit/5
-         [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,7 +95,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: ActivityTypes/Delete/5
-         [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Teacher")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
