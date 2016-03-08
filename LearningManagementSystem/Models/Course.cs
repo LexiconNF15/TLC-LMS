@@ -33,7 +33,7 @@ namespace LearningManagementSystem.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (CourseEnd <= CourseStart)
+            if (CourseEnd < CourseStart)
             {
                 yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
             }

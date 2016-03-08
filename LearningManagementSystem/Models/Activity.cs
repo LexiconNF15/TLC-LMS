@@ -34,7 +34,7 @@ namespace LearningManagementSystem.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (ActivityEnd <= ActivityStart)
+            if (ActivityEnd < ActivityStart)
             {
                 yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
             }
