@@ -167,21 +167,20 @@ namespace LearningManagementSystem.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, GroupId = model.GroupId};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (model.Role == "Teacher")
                 {
                     model.GroupId = null;
                 }
-
                 if (result.Succeeded)
                 {
+                    
                 UserManager.AddToRole(user.Id, model.Role);  // Koppling av roll till användaren sker här!
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);   ** OBS! Avmarkerad så ingen automatisk inloggning sker på den nyskapade användaren
                     
