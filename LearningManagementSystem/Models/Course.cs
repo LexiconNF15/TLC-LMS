@@ -33,17 +33,26 @@ namespace LearningManagementSystem.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (CourseEnd < CourseStart)
+            if (CourseEnd <= CourseStart)
             {
                 yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
             }
-            if (CourseStart < DateTime.Now)
+            if (CourseStart <= DateTime.Now)
             {
                 yield return new ValidationResult("Startdatum har passerat!");
             }
-            //if (CourseStart < Group.GroupStart || CourseEnd > Group.GroupEnd) //Går ej efterson man väljer grupp efter datum...
+            //if (Group != null)
             //{
-            //    yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
+                //if (Group.GroupStart != null)
+                //{
+                //    if (Group.GroupEnd != null)
+                //    {
+                        if (CourseStart < Group.GroupStart || CourseEnd > Group.GroupEnd) //Går ej efterson man väljer grupp efter datum...
+                        {
+                            yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
+                        }
+                //    }
+                //}
             //}
         }
 

@@ -34,11 +34,11 @@ namespace LearningManagementSystem.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (ActivityEnd < ActivityStart)
+            if (ActivityEnd <= ActivityStart)
             {
                 yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
             }
-            if (ActivityStart < DateTime.Now)
+            if (ActivityStart <= DateTime.Now)
             {
                 yield return new ValidationResult("Startdatum har passerat!");
             }

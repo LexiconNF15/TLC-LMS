@@ -44,7 +44,7 @@
             <dd>
                 @Html.DisplayFor(model => model.CourseEnd)
             </dd>*@
-   
+
     </dl>
     <dl>
         @Html.Label("Period: ")
@@ -73,28 +73,34 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => activity.ActivityName) </td>
-                        <td>@Html.DisplayFor(modelItem => activity.ActivityStart) - @Html.DisplayFor(modelItem => activity.ActivityEnd )</td>
+                        <td>@Html.DisplayFor(modelItem => activity.ActivityStart) - @Html.DisplayFor(modelItem => activity.ActivityEnd)</td>
                     </tr>
                 }
 
             </table>
         </dd>
 
-    </dl> 
+    </dl>
 </div>
 <p>
     <div>
-        @Html.ActionLink("Aktiviteter", "Index", "Activities", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Teacher"))
+            {
+                @Html.ActionLink("Aktiviteter", "Index", "Activities", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
+            }
+        }
     </div>
 
     @if (User.Identity.IsAuthenticated)
     {
-    if (User.IsInRole("Teacher"))
-    {
-    @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId })
-    }
+        if (User.IsInRole("Teacher"))
+        {
+            @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId })
+            @Html.ActionLink("Tillbaka", "Index")
+        }
     }
 
-   @* @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |*@
-    @Html.ActionLink("Tillbaka", "Index")
+    @* @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |*@
 </p>
