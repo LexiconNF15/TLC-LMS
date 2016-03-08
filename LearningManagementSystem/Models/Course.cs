@@ -47,10 +47,10 @@ namespace LearningManagementSystem.Models
                 //{
                 //    if (Group.GroupEnd != null)
                 //    {
-                        if (CourseStart < Group.GroupStart || CourseEnd > Group.GroupEnd) //Går ej efterson man väljer grupp efter datum...
-                        {
-                            yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
-                        }
+                        //if (CourseStart < Group.GroupStart || CourseEnd > Group.GroupEnd) //Går ej efterson man väljer grupp efter datum...
+                        //{
+                        //    yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
+                        //}
                 //    }
                 //}
             //}
