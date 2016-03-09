@@ -26,7 +26,7 @@ namespace LearningManagementSystem.Models
         public DateTime? CourseEnd { get; set; }
 
         [Display(Name = "Gruppnr")]
-        public int? GroupId { get; set; }
+        public int GroupId { get; set; }
 
         public virtual ICollection<Activity> Activities { get; set; }
         public virtual Group Group { get; set;  }
