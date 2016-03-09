@@ -10,7 +10,7 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Teacher")]
     public class ActivityTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

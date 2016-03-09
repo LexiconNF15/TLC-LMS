@@ -16,6 +16,7 @@ namespace LearningManagementSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Activities
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             var activities = db.Activities.Include(a => a.ActivityType).Include(a => a.Course); 

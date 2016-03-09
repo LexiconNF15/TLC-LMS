@@ -1,0 +1,71 @@
+﻿@model LearningManagementSystem.Models.Group
+
+@{
+    ViewBag.Title = "GroupCourses";
+}
+
+<h2>Kurser för @Html.DisplayFor(model => model.GroupName)</h2>
+
+<div>
+    <dl>
+        <dd>
+            <table class="table">
+                <tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().CourseName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().CourseStart)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().CourseEnd)
+                    </th>
+                </tr>
+                </tr>
+
+                @foreach (var item in Model.Courses)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseStart)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseEnd)
+                        </td>
+                        <td>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Teacher"))
+                                {
+                                    @Html.ActionLink("Redigera", "Edit", new { controller = "Courses", id = item.CourseId });
+                                }
+                            }
+
+                            @*@Html.ActionLink("Redigera", "Edit", new { id=item.CourseId }) |*@ |
+                            @Html.ActionLink("Detaljer", "Details", new { controller = "Courses", id = item.CourseId }) |
+                            @*@Html.ActionLink("Radera", "Delete", new { id=item.CourseId })*@
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Teacher"))
+                                {
+                                    @Html.ActionLink("Radera", "Delete", new { controller = "Courses", id = item.CourseId });
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Tillbaka till grupp", "Details", new { id = Model.GroupId })
+</p>

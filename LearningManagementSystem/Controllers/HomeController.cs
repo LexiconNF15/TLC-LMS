@@ -8,6 +8,11 @@ namespace LearningManagementSystem.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles = "Teacher")]
+        public ActionResult Administration()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

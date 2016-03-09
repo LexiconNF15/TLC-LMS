@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Administration";
+}
+
+<h2>Administration</h2>
+
+@*@Html.ActionLink("Användare", "Index", "Account", new { id = Model.GroupId }, new { @class = "btn btn-info", @style = "color:white" })
+@Html.ActionLink("Grupper", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-info", @style = "color:white" })
+@Html.ActionLink("Kurser", "Index", "Courses", new { id = Model.GroupId }, new { @class = "btn btn-info", @style = "color:white" })
+@Html.ActionLink("Aktiviteter", "Index", "Activities", new { id = Model.GroupId }, new { @class = "btn btn-info", @style = "color:white" })
+@Html.ActionLink("Dokument", "Index", "Home", new { id = Model.GroupId }, new { @class = "btn btn-info", @style = "color:white" })*@
+
+<p>
+    <input type="button" value="Användare" class="btn btn-default btn-info" onclick=" location.href='@Url.Action("Index", "Account")' " />
+</p>
+<p>
+    <input type="button" value="Grupper" class="btn btn-default btn-info" onclick=" location.href='@Url.Action("Index", "Groups")' " />
+</p>
+<p>
+    <input type="button" value="Kurser" class="btn btn-default btn-info" onclick=" location.href='@Url.Action("Index", "Courses")' " />
+</p>
+<p>
+    <input type="button" value="Aktiviteter" class="btn btn-default btn-info" onclick=" location.href='@Url.Action("Index", "Activities")' " />
+</p>
+<p>
+    <input type="button" value="Dokument" class="btn btn-default btn-info" onclick=" location.href='@Url.Action("Index", "Home")' " />
+</p>

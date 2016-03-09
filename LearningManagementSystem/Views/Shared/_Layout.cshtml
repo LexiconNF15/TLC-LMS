@@ -26,6 +26,18 @@
                     <li>@Html.ActionLink("Hem", "Index", "Home")</li>
                     <li>@Html.ActionLink("Om Applikationen", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Teacher"))
+                        {
+                            <li>@Html.ActionLink("Administration", "Administration", "Home")</li>
+                        }
+                        if (User.IsInRole("Student"))
+                        {
+                            <li>@Html.ActionLink("Min Sida", "/Groups/Details/", "Groups")</li>
+                        }
+                    }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

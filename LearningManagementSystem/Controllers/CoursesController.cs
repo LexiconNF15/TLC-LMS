@@ -10,12 +10,13 @@ using LearningManagementSystem.Models;
 
 namespace LearningManagementSystem.Models
 {
-    [Authorize] //[Authorize(Roles = "Teacher")]
+    [Authorize]
     public class CoursesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Courses
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             var courses = db.Courses.Include(c => c.Group);
@@ -24,6 +25,20 @@ namespace LearningManagementSystem.Models
 
         // GET: Courses/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Course course = db.Courses.Find(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            return View(course);
+        }
+
+        public ActionResult CourseActivities(int? id)
         {
             if (id == null)
             {

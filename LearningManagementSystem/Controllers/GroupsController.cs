@@ -16,6 +16,7 @@ namespace LearningManagementSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Groups
+        [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             return View(db.Groups.ToList());
@@ -23,6 +24,19 @@ namespace LearningManagementSystem.Controllers
 
         // GET: Groups/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Group group = db.Groups.Find(id);
+            if (group == null)
+            {
+                return HttpNotFound();
+            }
+            return View(group);
+        }
+        public ActionResult GroupCourses(int? id)
         {
             if (id == null)
             {

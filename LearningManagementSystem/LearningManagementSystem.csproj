@@ -263,6 +263,9 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Home\Administration.cshtml" />
+    <Content Include="Views\Groups\GroupCourses.cshtml" />
+    <Content Include="Views\Courses\CourseActivities.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

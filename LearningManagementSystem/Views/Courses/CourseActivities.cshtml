@@ -1,0 +1,71 @@
+﻿@model LearningManagementSystem.Models.Course
+
+@{
+    ViewBag.Title = "CoursesActivities";
+}
+
+<h2>Aktiviteter för @Html.DisplayFor(model => model.CourseName)</h2>
+
+<div>
+    <dl>
+        <dd>
+            <table class="table">
+                <tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Activities.FirstOrDefault().ActivityName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Activities.FirstOrDefault().ActivityStart)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Activities.FirstOrDefault().ActivityEnd)
+                    </th>
+                </tr>
+                </tr>
+
+                @foreach (var item in Model.Activities)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityStart)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActivityEnd)
+                        </td>
+                        <td>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Teacher"))
+                                {
+                                    @Html.ActionLink("Redigera", "Edit", new { controller = "Activities", id = item.ActivityId })
+                                }
+                            }
+
+                            @*@Html.ActionLink("Redigera", "Edit", new { id=item.ActivityId }) |*@ |
+                            @Html.ActionLink("Detaljer", "Details", new { controller = "Activities", id = item.ActivityId }) |
+                            @*@Html.ActionLink("Radera", "Delete", new { id=item.ActivityId })*@
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("Teacher"))
+                                {
+                                    @Html.ActionLink("Radera", "Delete", new { controller = "Activities", id = item.ActivityId })
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Tillbaka till kurs", "Details", new { id = Model.CourseId })
+</p>
