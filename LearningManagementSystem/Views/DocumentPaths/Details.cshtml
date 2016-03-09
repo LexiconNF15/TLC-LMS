@@ -1,0 +1,82 @@
+﻿@model LearningManagementSystem.Models.DocumentPath
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DocumentPath</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
