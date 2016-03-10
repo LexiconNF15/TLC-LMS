@@ -67,7 +67,7 @@
 <p>
     <div>
         @Html.ActionLink("Kurser för gruppen", "GroupCourses", "Groups", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
-        @Html.ActionLink("Användare", "Index", "Account", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
+        @*@Html.ActionLink("Användare", "Index", "Account", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })*@
     </div>
 
     @if (User.Identity.IsAuthenticated)

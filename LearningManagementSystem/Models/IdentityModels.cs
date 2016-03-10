@@ -21,11 +21,12 @@ namespace LearningManagementSystem.Models
         public virtual ICollection<DocumentPath> UploadedDocuments { get; set; }
 
 
+
+        //Ta bort?
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+            // lägg till claims
             return userIdentity;
         }
     }
