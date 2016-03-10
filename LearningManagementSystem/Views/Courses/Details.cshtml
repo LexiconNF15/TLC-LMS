@@ -88,7 +88,7 @@
         {
             if (User.IsInRole("Teacher"))
             {
-                @Html.ActionLink("Aktiviteter", "CourseActivities", "Courses", new { id = Model.CourseId }, new { @class = "btn btn-warning", @style = "color:white" })
+                @Html.ActionLink("Aktiviteter för kursen", "CourseActivities", "Courses", new { id = Model.CourseId }, new { @class = "btn btn-warning", @style = "color:white" })
             }
         }
     </div>

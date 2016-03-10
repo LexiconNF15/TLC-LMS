@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Aktivitet</h2>
+<h2>Aktiviteter</h2>
 
 @*<p>
     @Html.ActionLink("Skapa aktivitet", "Create")
@@ -85,3 +85,9 @@
 }
 
 </table>
+
+<p>
+    <input type="button" value="Administrera användare" class="btn btn-default btn-warning" onclick=" location.href='@Url.Action("Index","Account")' " />
+    <input type="button" value="Administrera grupper" class="btn btn-default btn-warning" onclick=" location.href='@Url.Action("Index","Groups")' " />
+    <input type="button" value="Administrera kurser" class="btn btn-default btn-warning" onclick=" location.href='@Url.Action("Index","Courses")' " />
+</p>
