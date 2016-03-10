@@ -17,6 +17,8 @@ namespace LearningManagementSystem.Models
         public string GroupDescription { get; set; }
         [Required]
         [Display(Name = "Startdatum")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0: yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime GroupStart { get; set; }
         [Required]
