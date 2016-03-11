@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LearningManagementSystem.Models.DocumentPath>
+﻿@model IEnumerable<LearningManagementSystem.Models.Document>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.User.FirstName)
+            @Html.DisplayNameFor(model => model.Uploader.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DocumentName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DocumentDescription)
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FilePath)
@@ -41,13 +44,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
+            @Html.DisplayFor(modelItem => item.Uploader.FirstName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.DocumentName)
+        </td>*@
+        <td>
+            <a href="@item.FilePath">@Html.DisplayFor(modelItem => item.DocumentName)</a>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DocumentDescription)
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FilePath)
@@ -65,9 +74,9 @@
             @Html.DisplayFor(modelItem => item.ActivityId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.DocumentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DocumentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DocumentId })
         </td>
     </tr>
 }

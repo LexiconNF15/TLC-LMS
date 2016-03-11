@@ -7,115 +7,122 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LearningManagementSystem.Models;
+using System.IO;
 
 namespace LearningManagementSystem.Controllers
 {
-    public class DocumentPathsController : Controller
+    public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DocumentPaths
+        // GET: Documents
         public ActionResult Index()
         {
-            var documents = db.Documents.Include(d => d.User);
+            var documents = db.Documents.Include(d => d.Uploader);
             return View(documents.ToList());
         }
 
-        // GET: DocumentPaths/Details/5
+        // GET: Documents/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DocumentPath documentPath = db.Documents.Find(id);
-            if (documentPath == null)
+            Document document = db.Documents.Find(id);
+            if (document == null)
             {
                 return HttpNotFound();
             }
-            return View(documentPath);
+            return View(document);
         }
 
-        // GET: DocumentPaths/Create
+        // GET: Documents/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
-        // POST: DocumentPaths/Create
+        // POST: Documents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DocumentName,DocumentDescription,FilePath,UploadDate,GroupId,CourseId,ActivityId,UserId")] DocumentPath documentPath)
+        public ActionResult Create([Bind(Include = "DocumentId,DocumentName,Description,FileName,FilePath,UploaderId,UploadDate,GroupId,CourseId,ActivityId")] Document document, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Documents.Add(documentPath);
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    document.FileName = System.IO.Path.GetFileName(upload.FileName);
+                    document.FilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), document.FileName);
+                    upload.SaveAs(document.FilePath);
+                }
+                db.Documents.Add(document);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", documentPath.UserId);
-            return View(documentPath);
+            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
+            return View(document);
         }
 
-        // GET: DocumentPaths/Edit/5
+        // GET: Documents/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DocumentPath documentPath = db.Documents.Find(id);
-            if (documentPath == null)
+            Document document = db.Documents.Find(id);
+            if (document == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", documentPath.UserId);
-            return View(documentPath);
+            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
+            return View(document);
         }
 
-        // POST: DocumentPaths/Edit/5
+        // POST: Documents/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DocumentName,DocumentDescription,FilePath,UploadDate,GroupId,CourseId,ActivityId,UserId")] DocumentPath documentPath)
+        public ActionResult Edit([Bind(Include = "DocumentId,DocumentName,Description,FileName,FilePath,UploaderId,UploadDate,GroupId,CourseId,ActivityId")] Document document)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(documentPath).State = EntityState.Modified;
+                db.Entry(document).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", documentPath.UserId);
-            return View(documentPath);
+            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
+            return View(document);
         }
 
-        // GET: DocumentPaths/Delete/5
+        // GET: Documents/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DocumentPath documentPath = db.Documents.Find(id);
-            if (documentPath == null)
+            Document document = db.Documents.Find(id);
+            if (document == null)
             {
                 return HttpNotFound();
             }
-            return View(documentPath);
+            return View(document);
         }
 
-        // POST: DocumentPaths/Delete/5
+        // POST: Documents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DocumentPath documentPath = db.Documents.Find(id);
-            db.Documents.Remove(documentPath);
+            Document document = db.Documents.Find(id);
+            db.Documents.Remove(document);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

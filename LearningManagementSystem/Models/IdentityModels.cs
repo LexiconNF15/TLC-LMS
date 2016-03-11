@@ -18,7 +18,7 @@ namespace LearningManagementSystem.Models
         public int? GroupId { get; set; }
 
         public virtual Group Group { get; set; }
-        public virtual ICollection<DocumentPath> UploadedDocuments { get; set; }
+        public virtual ICollection<Document> UploadedDocuments { get; set; }
 
 
 
@@ -51,7 +51,7 @@ namespace LearningManagementSystem.Models
 
         public System.Data.Entity.DbSet<LearningManagementSystem.Models.ActivityType> ActivityTypes { get; set; }
 
-        public System.Data.Entity.DbSet<LearningManagementSystem.Models.DocumentPath> Documents { get; set; }
+        public System.Data.Entity.DbSet<LearningManagementSystem.Models.Document> Documents { get; set; }
 
         //public System.Data.Entity.DbSet<LearningManagementSystem.Models.ApplicationUser> ApplicationUsers { get; set; }
     }

@@ -163,7 +163,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\ActivityTypesController.cs" />
-    <Compile Include="Controllers\DocumentPathsController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -179,7 +179,7 @@
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Models\DocumentPath.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -190,7 +190,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Documents\dokument1.txt" />
+    <Content Include="Uploads\dokument1.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -268,14 +268,14 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\DocumentPaths\Create.cshtml" />
-    <Content Include="Views\DocumentPaths\Delete.cshtml" />
-    <Content Include="Views\DocumentPaths\Details.cshtml" />
-    <Content Include="Views\DocumentPaths\Edit.cshtml" />
-    <Content Include="Views\DocumentPaths\Index.cshtml" />
     <Content Include="Views\Home\Administration.cshtml" />
     <Content Include="Views\Groups\GroupCourses.cshtml" />
     <Content Include="Views\Courses\CourseActivities.cshtml" />
+    <Content Include="Views\Documents\Create.cshtml" />
+    <Content Include="Views\Documents\Delete.cshtml" />
+    <Content Include="Views\Documents\Details.cshtml" />
+    <Content Include="Views\Documents\Edit.cshtml" />
+    <Content Include="Views\Documents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

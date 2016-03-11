@@ -1,4 +1,4 @@
-﻿@model LearningManagementSystem.Models.DocumentPath
+﻿@model LearningManagementSystem.Models.Document
 
 @{
     ViewBag.Title = "Delete";
@@ -8,15 +8,15 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>DocumentPath</h4>
+    <h4>Document</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.User.FirstName)
+            @Html.DisplayNameFor(model => model.Uploader.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
+            @Html.DisplayFor(model => model.Uploader.FirstName)
         </dd>
 
         <dt>
@@ -28,11 +28,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DocumentDescription)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DocumentDescription)
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName)
         </dd>
 
         <dt>
