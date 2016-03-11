@@ -51,6 +51,9 @@
         </td>*@
         <td>
             <a href="@item.FilePath">@Html.DisplayFor(modelItem => item.DocumentName)</a>
+            @*<a href="~\Uploads\"+ @item.FileName> @Html.DisplayFor(modelItem => item.DocumentName)</a>
+            @Url.Action(item.)*@
+            @*@Html.ActionLink(item.DocumentName,"Download", "Documents")*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
