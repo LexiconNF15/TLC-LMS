@@ -30,19 +30,17 @@
         <dt>
             @Html.DisplayNameFor(model => model.Uploader.FirstName)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Uploader.FirstName) @Html.DisplayFor(model => model.Uploader.LastName)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.FileName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FileName)
+        <dd>
+            @Html.DisplayFor(model => model.Uploader.FirstName) @Html.DisplayFor(model => model.Uploader.LastName)
         </dd>
-
-        <@*dt>
+       
+        @*<dt>
             @Html.DisplayNameFor(model => model.FilePath)
         </dt>
 
