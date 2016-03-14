@@ -14,6 +14,8 @@ namespace LearningManagementSystem.Controllers
     public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        //private const string localUrl = @"~\Uploads\";
+        private const string localUrl = @"\Uploads\";
 
         // GET: Documents
         public ActionResult Index()
@@ -57,8 +59,11 @@ namespace LearningManagementSystem.Controllers
                 {
                     document.FileName = System.IO.Path.GetFileName(upload.FileName);
                     document.FilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), document.FileName);
+                    //document.FilePath = Path.Combine((Server.MapPath(@"\Uploads\")), document.FileName);
+                    //document.FilePath = Path.Combine((Server.MapPath(localUrl)), document.FileName);
                     upload.SaveAs(document.FilePath);
                 }
+                document.FilePath = @localUrl + document.FileName;
                 db.Documents.Add(document);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -126,6 +131,26 @@ namespace LearningManagementSystem.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Download(int? id)
+        {
+            if (id == null)
+            {
+                return new
+                HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Document document = db.Documents.Find(id);
+
+            string path = Server.MapPath(document.FilePath);
+
+            if (System.IO.File.Exists(path))
+            {
+                return File(path,
+                MimeMapping.GetMimeMapping(document.FileName), document.FileName);
+            }
+            return HttpNotFound();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
