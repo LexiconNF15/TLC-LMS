@@ -11,6 +11,7 @@ using System.IO;
 
 namespace LearningManagementSystem.Controllers
 {
+    [Authorize]
     public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -55,23 +56,45 @@ namespace LearningManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                //if (upload != null && upload.ContentLength > 0)
+                //{
+                //    document.FileName = System.IO.Path.GetFileName(upload.FileName);
+                //    document.FilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), document.FileName);
+                //    //document.FilePath = Path.Combine((Server.MapPath(@"\Uploads\")), document.FileName);
+                //    //document.FilePath = Path.Combine((Server.MapPath(localUrl)), document.FileName);
+                //    upload.SaveAs(document.FilePath);
+                //}
+                //document.FilePath = @localUrl + document.FileName;
+                //db.Documents.Add(document);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
+
+                var CurrentUser = db.Users.Where(u => u.UserName == User.Identity.Name.ToString()).ToList().FirstOrDefault();
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    document.FileName = System.IO.Path.GetFileName(upload.FileName);
-                    document.FilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), document.FileName);
+                    // Här sparas filen som ska laddas upp i vår katalog
+                    string nameOfFile = System.IO.Path.GetFileName(upload.FileName);
+                    string saveFilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), nameOfFile);
                     //document.FilePath = Path.Combine((Server.MapPath(@"\Uploads\")), document.FileName);
                     //document.FilePath = Path.Combine((Server.MapPath(localUrl)), document.FileName);
-                    upload.SaveAs(document.FilePath);
-                }
-                document.FilePath = @localUrl + document.FileName;
-                db.Documents.Add(document);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    upload.SaveAs(saveFilePath);
+
+                    /// Här laddar vi dbset<Documents> med korrekta värden.
+                    document.UploadDate = DateTime.Now;
+                    //document.FileName = System.IO.Path.GetFileName(upload.FileName);
+                    document.FileName = nameOfFile;
+                    document.FilePath =(@localUrl + nameOfFile);
+                    document.UploaderId = CurrentUser.Id;
+                    db.Documents.Add(document);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
             }
+                }
 
             ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
             return View(document);
         }
+            
 
         // GET: Documents/Edit/5
         public ActionResult Edit(int? id)

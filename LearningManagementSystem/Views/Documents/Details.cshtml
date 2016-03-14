@@ -4,61 +4,60 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Document</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Uploader.FirstName)
-        </dt>
+<h4>Dokumentdetaljer</h4>
+<hr />
+<dl class="dl-horizontal">
+    <dt>
+        @*@Html.DisplayNameFor(model => model.Uploader.FirstName)*@
+        @Html.Label("Uppladdat av")
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Uploader.FirstName)
-        </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Uploader.FirstName) @Html.DisplayFor(model => model.Uploader.LastName)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DocumentName)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.DocumentName)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DocumentName)
-        </dd>
+    <dd>
+        @Html.DisplayFor(model => model.DocumentName)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.Description)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+    <dd>
+        @Html.DisplayFor(model => model.Description)
+    </dd>
 
-        <dt>
+    @*<dt>
             @Html.DisplayNameFor(model => model.FileName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FileName)
-        </dd>
+        </dd>*@
 
-        <dt>
+    @*<dt>
             @Html.DisplayNameFor(model => model.FilePath)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FilePath)
-        </dd>
+        </dd>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UploadDate)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.UploadDate)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UploadDate)
-        </dd>
+    <dd>
+        @Html.DisplayFor(model => model.UploadDate)
+    </dd>
 
-        <dt>
+    @*<dt>
             @Html.DisplayNameFor(model => model.GroupId)
         </dt>
 
@@ -80,11 +79,17 @@
 
         <dd>
             @Html.DisplayFor(model => model.ActivityId)
-        </dd>
+        </dd>*@
 
-    </dl>
+</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DocumentId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Redigera", "Edit", new { id = Model.DocumentId }) |
+    @Html.ActionLink("Tillbaka", "Index")
 </p>
+
+
+       
+      
+
+ 
