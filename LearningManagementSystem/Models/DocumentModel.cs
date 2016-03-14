@@ -34,7 +34,7 @@ namespace LearningManagementSystem.Models
 
         [ForeignKey("UploaderId")]
         public virtual ApplicationUser Uploader { get; set; }
-
+        public virtual Group Group { get; set; }
        
     }
 }
