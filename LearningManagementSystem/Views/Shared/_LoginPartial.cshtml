@@ -7,8 +7,8 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @*@Html.ActionLink("Hej " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-            @Html.ActionLink("Inställingar", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Inställningar" })
+            @Html.ActionLink("Hej " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @*@Html.ActionLink("Inställingar", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Inställningar" })*@
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
     </ul>

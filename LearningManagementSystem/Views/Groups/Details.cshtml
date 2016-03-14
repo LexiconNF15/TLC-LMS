@@ -85,8 +85,15 @@
                 <tr>
                     <th>Dokument</th>
                 </tr>
+
+                @foreach (var item in Model.Documents)
+                {
+                    <tr>
+                        <a href="@item.FilePath">@Html.DisplayFor(modelItem => item.DocumentName)</a>
+                    </tr>
+                }
+
             </table>
-            @Html.ActionLink("Ladda upp dokument", "Create", "Documents", new { id = Model.GroupId }, new { @class = "btn btn-primary", @style = "color:white" })
         </dd>
 
     </dl>
@@ -105,10 +112,12 @@
     {
         if (User.IsInRole("Teacher"))
         {
-            @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId })
+        <p>
+            @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId }) |
             @Html.ActionLink("Tillbaka", "Index")
+        </p>
         }
     }
 
     @* @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId }) |*@
-</p>
+    </p>

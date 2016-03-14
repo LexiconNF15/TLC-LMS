@@ -32,6 +32,8 @@ namespace LearningManagementSystem.Models
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
 
+        public virtual ICollection<Document> Documents { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (GroupEnd < GroupStart)
