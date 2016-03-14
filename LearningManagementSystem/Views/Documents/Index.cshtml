@@ -4,16 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Dokument</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <input type="button" value="Ladda upp dokument" class="btn btn-default btn-primary" onclick=" location.href='@Url.Action("Create","Documents")' " />
 </p>
+
+@*<p>
+        @Html.ActionLink("Ladda upp dokument", "Create")
+    </p>*@
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Uploader.FirstName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.DocumentName)
         </th>
@@ -21,67 +21,74 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FileName)
+            @*@Html.DisplayNameFor(model => model.Uploader.FirstName) @Html.DisplayNameFor(model => model.Uploader.LastName)*@
+            @Html.Label("Uppladdat av")
         </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilePath)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.FilePath)
+            @*@Html.DisplayNameFor(model => model.UploadDate)*@
+            @Html.Label("Datum")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UploadDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GroupId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActivityId)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.GroupId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActivityId)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Uploader.FirstName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.DocumentName)
-        </td>*@
-        <td>
-            <a href="@item.FilePath">@Html.DisplayFor(modelItem => item.DocumentName)</a>
-            @*<a href="~\Uploads\"+ @item.FileName> @Html.DisplayFor(modelItem => item.DocumentName)</a>
-            @Url.Action(item.)*@
-            @*@Html.ActionLink(item.DocumentName,"Download", "Documents")*@
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FilePath)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UploadDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActivityId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DocumentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DocumentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DocumentId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DocumentName)
+                </td>*@
+            <td>
+                <a href="@item.FilePath">@Html.DisplayFor(modelItem => item.DocumentName)</a>
+                @*<a href="~\Uploads\"+ @item.FileName> @Html.DisplayFor(modelItem => item.DocumentName)</a>
+                    @Url.Action(item.)*@
+                @*@Html.ActionLink(item.DocumentName,"Download", "Documents")*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uploader.FirstName) @Html.DisplayFor(modelItem => item.Uploader.LastName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilePath)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.GroupId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivityId)
+                </td>*@
+            <td>
+                @Html.ActionLink("Redigera", "Edit", new { id = item.DocumentId }) |
+                @Html.ActionLink("Detaljer", "Details", new { id = item.DocumentId }) |
+                @Html.ActionLink("Radera", "Delete", new { id = item.DocumentId })
+            </td>
+        </tr>
+    }
 
 </table>
