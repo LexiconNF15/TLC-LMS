@@ -63,9 +63,14 @@ namespace LearningManagementSystem.Controllers
                 {
                     document.GroupId = CurrentUser.GroupId;
                 }
+                else if (TempData["GroupId"] != null)
+                {
+                    document.GroupId = (int)TempData["GroupId"];
+                }
                 else
-                    document.GroupId = (int)TempData["GroupId"]; 
-
+                {
+                    document.GroupId = null;
+                }
 
                 if (upload != null && upload.ContentLength > 0)
                 {
