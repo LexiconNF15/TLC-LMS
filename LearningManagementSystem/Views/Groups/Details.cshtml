@@ -64,8 +64,39 @@
 
     </dl>
 </div>
+<div>
+    <dl>
+        <dd>
+            @*<table class="table">
+                    <tr>
+                        <th>Dokument</th>
+                    </tr>
+                </table>
+                <hr />
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="file" />
+                    <br>
+                    <input type="submit" value="Ladda upp" />
+                }*@
+            @*@Html.ActionLink("Ladda upp dokument", "Create", "DocumentPaths", new { id = Model.GroupId }, new { @class = "btn btn-primary", @style = "color:white" })*@
+            @*<hr />*@
+            <table class="table">
+                <tr>
+                    <th>Dokument</th>
+                </tr>
+            </table>
+            @Html.ActionLink("Ladda upp dokument", "Create", "Documents", new { id = Model.GroupId }, new { @class = "btn btn-primary", @style = "color:white" })
+        </dd>
+
+    </dl>
+</div>
 <p>
     <div>
+
+    </div>
+    <div>
+        <hr />
         @Html.ActionLink("Kurser för gruppen", "GroupCourses", "Groups", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })
         @*@Html.ActionLink("Användare", "Index", "Account", new { id = Model.GroupId }, new { @class = "btn btn-warning", @style = "color:white" })*@
     </div>
@@ -74,7 +105,7 @@
     {
         if (User.IsInRole("Teacher"))
         {
-            @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId }) 
+            @Html.ActionLink("Redigera", "Edit", new { id = Model.GroupId })
             @Html.ActionLink("Tillbaka", "Index")
         }
     }
