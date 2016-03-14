@@ -41,8 +41,9 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Documents/Create
-        public ActionResult Create()
+        public ActionResult Create(int? GrId)
         {
+            TempData["GroupId"] = GrId;
             ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
@@ -56,20 +57,16 @@ namespace LearningManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (upload != null && upload.ContentLength > 0)
-                //{
-                //    document.FileName = System.IO.Path.GetFileName(upload.FileName);
-                //    document.FilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), document.FileName);
-                //    //document.FilePath = Path.Combine((Server.MapPath(@"\Uploads\")), document.FileName);
-                //    //document.FilePath = Path.Combine((Server.MapPath(localUrl)), document.FileName);
-                //    upload.SaveAs(document.FilePath);
-                //}
-                //document.FilePath = @localUrl + document.FileName;
-                //db.Documents.Add(document);
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
-
+                 
                 var CurrentUser = db.Users.Where(u => u.UserName == User.Identity.Name.ToString()).ToList().FirstOrDefault();
+                if (CurrentUser.GroupId != null)
+                {
+                    document.GroupId = CurrentUser.GroupId;
+                }
+                else
+                    document.GroupId = (int)TempData["GroupId"]; 
+
+
                 if (upload != null && upload.ContentLength > 0)
                 {
                     // Här sparas filen som ska laddas upp i vår katalog
@@ -83,18 +80,20 @@ namespace LearningManagementSystem.Controllers
                     document.UploadDate = DateTime.Now;
                     //document.FileName = System.IO.Path.GetFileName(upload.FileName);
                     document.FileName = nameOfFile;
-                    document.FilePath =(@localUrl + nameOfFile);
+                    document.FilePath = (@localUrl + nameOfFile);
                     document.UploaderId = CurrentUser.Id;
+                    //document.GroupId = CurrentUser.GroupId;
                     db.Documents.Add(document);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
-            }
+                    //return RedirectToAction("Index");
                 }
+                return RedirectToAction("Index");
+            }
 
-            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
+            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId, document.GroupId);
             return View(document);
         }
-            
+
 
         // GET: Documents/Edit/5
         public ActionResult Edit(int? id)
@@ -108,7 +107,8 @@ namespace LearningManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
+            //ViewBag.UploaderId = new SelectList(db.Users, "Id", "FirstName", document.UploaderId);
+            //Group group = db.Groups.Find(id);
             return View(document);
         }
 
@@ -117,11 +117,15 @@ namespace LearningManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DocumentId,DocumentName,Description,FileName,FilePath,UploaderId,UploadDate,GroupId,CourseId,ActivityId")] Document document)
+        public ActionResult Edit([Bind(Include = "DocumentId,DocumentName,Description")] Document document)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(document).State = EntityState.Modified;
+                Document NewDocument = db.Documents.Find(document.DocumentId);
+                NewDocument.DocumentName = document.DocumentName;
+                NewDocument.Description = document.Description;
+
+                db.Entry(NewDocument).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

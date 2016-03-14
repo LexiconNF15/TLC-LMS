@@ -16,7 +16,7 @@ namespace LearningManagementSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Groups
-        [Authorize(Roles = "Teacher")]
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
             return View(db.Groups.ToList());
@@ -51,7 +51,7 @@ namespace LearningManagementSystem.Controllers
         }
 
         // GET: Groups/Create
-        [Authorize(Roles = "Teacher")]
+        //[Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
             return View();
@@ -61,7 +61,7 @@ namespace LearningManagementSystem.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles = "Teacher")]
+        //[Authorize(Roles = "Teacher")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "GroupId,GroupName,GroupDescription,GroupStart,GroupEnd")] Group group)
         {
@@ -103,6 +103,7 @@ namespace LearningManagementSystem.Controllers
             {
                 db.Entry(group).State = EntityState.Modified;
                 db.SaveChanges();
+                //TempData["CurrentGroup"] = group.GroupId;
                 return RedirectToAction("Index");
             }
             return View(group);
