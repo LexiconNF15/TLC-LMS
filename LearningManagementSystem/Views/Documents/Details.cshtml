@@ -8,15 +8,7 @@
 <h4>Dokumentdetaljer</h4>
 <hr />
 <dl class="dl-horizontal">
-    <dt>
-        @*@Html.DisplayNameFor(model => model.Uploader.FirstName)*@
-        @Html.Label("Uppladdat av")
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Uploader.FirstName) @Html.DisplayFor(model => model.Uploader.LastName)
-    </dd>
-
+    
     <dt>
         @Html.DisplayNameFor(model => model.DocumentName)
     </dt>
@@ -33,14 +25,24 @@
         @Html.DisplayFor(model => model.Description)
     </dd>
 
-    @*<dt>
-            @Html.DisplayNameFor(model => model.FileName)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.FileName)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FileName)
-        </dd>*@
+    <dd>
+        @Html.DisplayFor(model => model.FileName)
+   </dd>
 
+    <dt>
+    @*@Html.DisplayNameFor(model => model.Uploader.FirstName)*@
+    @Html.Label("Uppladdat av")
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Uploader.FirstName) @Html.DisplayFor(model => model.Uploader.LastName)
+    </dd>
+
+    
     @*<dt>
             @Html.DisplayNameFor(model => model.FilePath)
         </dt>

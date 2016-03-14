@@ -84,6 +84,12 @@
             <table class="table">
                 <tr>
                     <th>Dokument</th>
+                    <th>
+                       Beskrivning
+                    </th>
+                    @*<th>
+                        @Html.Label("Uppladdat av")
+                    </th>*@
                 </tr>
 
                 @foreach (var item in Model.Documents)
@@ -92,6 +98,12 @@
                     <td>
                         <a href="@item.FilePath">@Html.DisplayFor(modelItem => item.DocumentName)</a>
                     </td>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Uploader.FirstName) @Html.DisplayFor(modelItem => item.Uploader.LastName)
+                    <td>*@  
                     </tr>
                 }
 
