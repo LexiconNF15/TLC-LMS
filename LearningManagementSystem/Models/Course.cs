@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,7 +12,7 @@ namespace LearningManagementSystem.Models
 
         public int CourseId { get; set; }
         [Required]
-        [Display(Name="Kursnamn")]
+        [Display(Name = "Kursnamn")]
         public string CourseName { get; set; }
         [Required]
         [Display(Name = "Beskrivning")]
@@ -28,8 +29,11 @@ namespace LearningManagementSystem.Models
         [Display(Name = "Gruppnr")]
         public int GroupId { get; set; }
 
+        // virtual ICollection<Activity> Activities { get; set; }
+
+        [ForeignKey("GroupId")]
+        public virtual Group Group { get; set; }
         public virtual ICollection<Activity> Activities { get; set; }
-        public virtual Group Group { get; set;  }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
@@ -41,20 +45,22 @@ namespace LearningManagementSystem.Models
             {
                 yield return new ValidationResult("Startdatum har passerat!");
             }
-            //if (Group != null)
-            //{
+            if (GroupId > 0)
+            {
+                ApplicationDbContext db = new ApplicationDbContext();
+                var CGroup = db.Groups.Where(g => g.GroupId == GroupId).FirstOrDefault();
                 //if (Group.GroupStart != null)
                 //{
                 //    if (Group.GroupEnd != null)
                 //    {
-                        //if (CourseStart < Group.GroupStart || CourseEnd > Group.GroupEnd) //Går ej efterson man väljer grupp efter datum...
-                        //{
-                        //    yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
-                        //}
+
+                if ((CourseStart < CGroup.GroupStart) || (CourseEnd > CGroup.GroupEnd)) //Går ej efterson man väljer grupp efter datum...
+                        {
+                            yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
+                        }
                 //    }
                 //}
-            //}
+            }
         }
-
     }
 }
