@@ -28,30 +28,78 @@ namespace LearningManagementSystem.Migrations
         private static void SeedActivities(LearningManagementSystem.Models.ApplicationDbContext context)
         {
             var activities = new List<Activity> {
-                new Activity {
-                    ActivityId = 1 ,
+                    new Activity {
+                    ActivityId = 1,
                     ActivityName= "DatabasModellering", 
                     ActivityDescription= "Pluralsite: EF6 med Scott Allen",
                     ActivityStart=DateTime.Parse("2016-04-01"),
-                    ActivityEnd=DateTime.Parse("2016-08-31"),
+                    ActivityEnd=DateTime.Parse("2016-05-10"),
                     CourseId = 1,
                     ActivityTypeId = 1},
                     new Activity {
-                    ActivityId = 2 ,
+                    ActivityId = 2,
                     ActivityName= "C# Collections", 
                     ActivityDescription= "Pluralsite :Collections med Scott Allen",
-                    ActivityStart=DateTime.Parse("2016-03-28"),
-                    ActivityEnd=DateTime.Parse("2016-04-14"),
+                    ActivityStart=DateTime.Parse("2016-03-25"),
+                    ActivityEnd=DateTime.Parse("2016-03-30"),
                     CourseId = 1,
-                    ActivityTypeId = 1},
+                    ActivityTypeId = 3},
                     new Activity {
                     ActivityId = 3,
                     ActivityName= "JAVA Enterprise", 
                     ActivityDescription= "Collections",
                     ActivityStart=DateTime.Parse("2016-04-01"),
-                    ActivityEnd=DateTime.Parse("2016-08-31"),
+                    ActivityEnd=DateTime.Parse("2016-05-10"),
                     CourseId = 2,
-                    ActivityTypeId = 2},
+                    ActivityTypeId = 2}, 
+                    new Activity {
+                    ActivityId = 4,
+                    ActivityName= "AngularJS intro", 
+                    ActivityDescription= "Pluralsite : Basic AngularJS Simon Ward",
+                    ActivityStart=DateTime.Parse("2016-04-11"),
+                    ActivityEnd=DateTime.Parse("2016-04-15"),
+                    CourseId = 1,
+                    ActivityTypeId = 3},
+                    new Activity {
+                    ActivityId = 5,
+                    ActivityName= "JAVA Netbeans", 
+                    ActivityDescription= "Use NetBeans",
+                    ActivityStart=DateTime.Parse("2016-05-11"),
+                    ActivityEnd=DateTime.Parse("2016-06-14"),
+                    CourseId = 2,
+                    ActivityTypeId = 1},
+                    new Activity {
+                    ActivityId = 6,
+                    ActivityName= "Razor Fundamentals", 
+                    ActivityDescription= "CodeSchool : Rapid development with Razor",
+                    ActivityStart=DateTime.Parse("2016-04-16"),
+                    ActivityEnd=DateTime.Parse("2016-05-14"),
+                    CourseId = 1,
+                    ActivityTypeId = 1},
+                    new Activity {
+                    ActivityId = 7,
+                    ActivityName= "JAVA Projekt", 
+                    ActivityDescription= "Create consoleprojekt for Airfarebookings",
+                    ActivityStart=DateTime.Parse("2016-06-15"),
+                    ActivityEnd=DateTime.Parse("2016-07-12"),
+                    CourseId = 2,
+                    ActivityTypeId = 4},
+                    new Activity {
+                    ActivityId = 8,
+                    ActivityName= "Sharepoint Fundamentals", 
+                    ActivityDescription= "CodeSchool : Sharepoint at first glance",
+                    ActivityStart=DateTime.Parse("2016-04-05"),
+                    ActivityEnd=DateTime.Parse("2016-05-30"),
+                    CourseId = 3,
+                    ActivityTypeId = 1},
+                    new Activity {
+                    ActivityId = 9,
+                    ActivityName= "ITIL", 
+                    ActivityDescription= "ITIL certifieringstest",
+                    ActivityStart=DateTime.Parse("2016-07-15"),
+                    ActivityEnd=DateTime.Parse("2016-07-19"),
+                    CourseId = 3,
+                    ActivityTypeId = 4},
 
 
         };
@@ -91,21 +139,21 @@ namespace LearningManagementSystem.Migrations
                     CourseName= "C# intro", 
                     CourseDescription= "Introduktion till C# grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-03-25"),
-                    CourseEnd=DateTime.Parse("2016-04-15"),
+                    CourseEnd=DateTime.Parse("2016-07-15"),
                     GroupId = 1},
                 new Course {
                     CourseId = 2,
                     CourseName= "JAVA intro", 
                     CourseDescription= "Introduktion till JAVA grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-03-25"),
-                    CourseEnd=DateTime.Parse("2016-04-25"),
+                    CourseEnd=DateTime.Parse("2016-07-25"),
                     GroupId = 2},
                  new Course {
                     CourseId = 3,
                     CourseName= "Sharepoint intro", 
                     CourseDescription= "Introduktion till Sharepoint grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-04-01"),
-                    CourseEnd=DateTime.Parse("2016-05-31"),
+                    CourseEnd=DateTime.Parse("2016-08-31"),
                     GroupId = 4},
                 new Course {
                     CourseId = 4,
@@ -119,7 +167,7 @@ namespace LearningManagementSystem.Migrations
                     CourseName= "Sharepoint fortsättning", 
                     CourseDescription= "Introduktion till Sharepoint påbyggnadsnivå",
                     CourseStart=DateTime.Parse("2016-05-01"),
-                    CourseEnd=DateTime.Parse("2016-08-31"),
+                    CourseEnd=DateTime.Parse("2016-08-30"),
                     GroupId = 4},
                               
              };
@@ -138,13 +186,13 @@ namespace LearningManagementSystem.Migrations
                     GroupName= ".NET Februari",
                     GroupDescription = "Innehåller:.Net, C# och Angular JS.", 
                     GroupStart=DateTime.Parse("2016-03-24"),
-                    GroupEnd=DateTime.Parse("2016-04-24")},
+                    GroupEnd=DateTime.Parse("2016-07-24")},
                 new Group {
                     GroupId = 2,
                     GroupName= "JAVA Mars",
                     GroupDescription = "Innehåller:JAVA Enterprise, JavaScript, Oracle.", 
                     GroupStart=DateTime.Parse("2016-03-24"),
-                    GroupEnd=DateTime.Parse("2016-05-24")},
+                    GroupEnd=DateTime.Parse("2016-08-24")},
                 new Group {
                     GroupId = 3,
                     GroupName= "IT-Tekniker Mars",
@@ -156,7 +204,7 @@ namespace LearningManagementSystem.Migrations
                     GroupName= "Sharepoint-Tekniker April",
                     GroupDescription = "Innehåller: Sharepoint, Office365, ITIL.", 
                     GroupStart=DateTime.Parse("2016-04-01"),
-                    GroupEnd=DateTime.Parse("2016-06-30")},
+                    GroupEnd=DateTime.Parse("2016-09-30")},
                 new Group {
                     GroupId = 5,
                     GroupName= ".NET Juni",
