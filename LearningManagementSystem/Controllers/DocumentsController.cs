@@ -11,7 +11,7 @@ using System.IO;
 
 namespace LearningManagementSystem.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Teacher")]
     public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
