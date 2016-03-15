@@ -42,6 +42,17 @@ namespace LearningManagementSystem.Models
             {
                 yield return new ValidationResult("Startdatum har passerat!");
             }
+            if (CourseId > 0)
+            {
+                ApplicationDbContext db = new ApplicationDbContext();
+                var CCourse = db.Courses.Where(g => g.CourseId == CourseId).FirstOrDefault();
+
+                if ((ActivityStart < CCourse.CourseStart) || (ActivityEnd > CCourse.CourseEnd)) //Går ej efterson man väljer grupp efter datum...
+                {
+                    yield return new ValidationResult("Aktivitetsdatum ligger utanför tidsperioden för kursen!");
+                }
+
+            }
         }
 
     }
