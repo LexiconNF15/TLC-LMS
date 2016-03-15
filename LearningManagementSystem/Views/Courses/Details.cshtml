@@ -106,3 +106,13 @@
 
     @* @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |*@
     </p>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Student"))
+    {
+        <p>
+            @Html.ActionLink("Tillbaka till kurser", null, null, null, new { href = Request.UrlReferrer })
+        </p>
+    }
+}
