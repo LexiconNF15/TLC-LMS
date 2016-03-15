@@ -56,7 +56,6 @@ namespace LearningManagementSystem.Models
         [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
-
             ViewBag.GroupId = new SelectList(db.Groups, "GroupId", "GroupName"); 
             return View();
         }
@@ -67,7 +66,7 @@ namespace LearningManagementSystem.Models
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Teacher")]
-        public ActionResult Create([Bind(Include = "CourseId,CourseName,CourseDescription,CourseStart,CourseEnd,GroupId,")] Course course)
+        public ActionResult Create([Bind(Include = "CourseId,CourseName,CourseDescription,CourseStart,CourseEnd,GroupId")] Course course)
         {
             if (ModelState.IsValid)
             {
