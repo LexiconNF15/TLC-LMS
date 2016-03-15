@@ -61,36 +61,36 @@
 
 
     </dl>
-    <dl>
-        <dd>
-            <table class="table">
-                <tr>
-                    <th>Aktivitet</th>
-                    <th>Period</th>
-                </tr>
-
-                @foreach (var activity in Model.Activities)
-                {
+    @*<dl>
+            <dd>
+                <table class="table">
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => activity.ActivityName) </td>
-                        <td>@Html.DisplayFor(modelItem => activity.ActivityStart) - @Html.DisplayFor(modelItem => activity.ActivityEnd)</td>
+                        <th>Aktivitet</th>
+                        <th>Period</th>
                     </tr>
-                }
 
-            </table>
-        </dd>
+                    @foreach (var activity in Model.Activities)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => activity.ActivityName) </td>
+                            <td>@Html.DisplayFor(modelItem => activity.ActivityStart) - @Html.DisplayFor(modelItem => activity.ActivityEnd)</td>
+                        </tr>
+                    }
 
-    </dl>
+                </table>
+            </dd>
+
+        </dl>*@
 </div>
 <p>
     <div>
-        @if (User.Identity.IsAuthenticated)
-        {
-            if (User.IsInRole("Teacher"))
+        @*@if (User.Identity.IsAuthenticated)
             {
-                @Html.ActionLink("Aktiviteter för kursen", "CourseActivities", "Courses", new { id = Model.CourseId }, new { @class = "btn btn-warning", @style = "color:white" })
-            }
-        }
+                if (User.IsInRole(""))
+                {*@
+        @Html.ActionLink("Aktiviteter för kursen", "CourseActivities", "Courses", new { id = Model.CourseId }, new { @class = "btn btn-warning", @style = "color:white" })
+        @*}
+            }*@
     </div>
 
     @if (User.Identity.IsAuthenticated)
@@ -99,20 +99,19 @@
         {
         <p>
             @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |
-            @Html.ActionLink("Tillbaka", "Index")
+            @Html.ActionLink("Tillbaka till kurslistan", "Index")
         </p>
         }
     }
 
     @* @Html.ActionLink("Redigera", "Edit", new { id = Model.CourseId }) |*@
     </p>
-
-@if (User.Identity.IsAuthenticated)
-{
-    if (User.IsInRole("Student"))
+    @if (User.Identity.IsAuthenticated)
     {
-        <p>
-            @Html.ActionLink("Tillbaka till kurser", null, null, null, new { href = Request.UrlReferrer })
-        </p>
+        if (User.IsInRole("Student"))
+        {
+            <p>
+                @Html.ActionLink("Tillbaka till kurser", "GroupCourses", new { controller ="Groups", id = Model.Group.GroupId})
+            </p>
+        }
     }
-}

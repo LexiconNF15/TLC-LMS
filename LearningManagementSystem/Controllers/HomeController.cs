@@ -39,7 +39,7 @@ namespace LearningManagementSystem.Controllers
             }
             else
             {
-                return RedirectToAction("login", "Account");
+                return View();
             }
         }
 

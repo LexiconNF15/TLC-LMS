@@ -90,10 +90,17 @@
         {
         <p>
             @Html.ActionLink("Redigera", "Edit", new { id = Model.ActivityId }) |
+            @Html.ActionLink("Tillbaka till aktivitetslistan", "Index")
         </p>
         }
     }
-
-    @*@Html.ActionLink("Redigera", "Edit", new { id = Model.ActivityId }) |*@
-    @Html.ActionLink("Tillbaka", "Index")
     </p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Student"))
+        {
+            <p>
+                @Html.ActionLink("Tillbaka till aktiviteter", null, null, null, new { href = Request.UrlReferrer })
+            </p>
+        }
+    }
