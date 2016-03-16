@@ -146,29 +146,36 @@ namespace LearningManagementSystem.Migrations
                     CourseName= "JAVA intro", 
                     CourseDescription= "Introduktion till JAVA grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-03-25"),
-                    CourseEnd=DateTime.Parse("2016-07-25"),
+                    CourseEnd=DateTime.Parse("2016-07-12"),
                     GroupId = 2},
                  new Course {
                     CourseId = 3,
                     CourseName= "Sharepoint intro", 
                     CourseDescription= "Introduktion till Sharepoint grundläggande nivå",
                     CourseStart=DateTime.Parse("2016-04-01"),
-                    CourseEnd=DateTime.Parse("2016-08-31"),
+                    CourseEnd=DateTime.Parse("2016-07-30"),
                     GroupId = 4},
                 new Course {
                     CourseId = 4,
                     CourseName= "JAVA Fortsättning", 
                     CourseDescription= "Introduktion till JAVA påbyggnadsnivå",
-                    CourseStart=DateTime.Parse("2016-04-01"),
-                    CourseEnd=DateTime.Parse("2016-06-24"),
+                    CourseStart=DateTime.Parse("2016-07-17"),
+                    CourseEnd=DateTime.Parse("2016-08-24"),
                     GroupId = 2},
                  new Course {
                     CourseId = 5,
                     CourseName= "Sharepoint fortsättning", 
                     CourseDescription= "Introduktion till Sharepoint påbyggnadsnivå",
-                    CourseStart=DateTime.Parse("2016-05-01"),
-                    CourseEnd=DateTime.Parse("2016-08-30"),
+                    CourseStart=DateTime.Parse("2016-08-01"),
+                    CourseEnd=DateTime.Parse("2016-09-30"),
                     GroupId = 4},
+                 new Course {
+                    CourseId = 6,
+                    CourseName= "C# fortsättning", 
+                    CourseDescription= "C# fortsättnings nivå 1",
+                    CourseStart=DateTime.Parse("2016-07-16"),
+                    CourseEnd=DateTime.Parse("2016-08-19"),
+                    GroupId = 1},
                               
              };
             courses.ForEach(c => context.Courses.AddOrUpdate(c));
@@ -186,7 +193,7 @@ namespace LearningManagementSystem.Migrations
                     GroupName= ".NET Februari",
                     GroupDescription = "Innehåller:.Net, C# och Angular JS.", 
                     GroupStart=DateTime.Parse("2016-03-24"),
-                    GroupEnd=DateTime.Parse("2016-07-24")},
+                    GroupEnd=DateTime.Parse("2016-08-24")},
                 new Group {
                     GroupId = 2,
                     GroupName= "JAVA Mars",
@@ -246,6 +253,13 @@ namespace LearningManagementSystem.Migrations
                     LastName = "Svensson",
                 },
                 new ApplicationUser { 
+                    UserName = "anette@mail.com", 
+                    Email = "anette@mail.com", 
+                    //GroupId = null, 
+                    FirstName = "Anette",
+                    LastName = "Gustavsson",
+                },
+                new ApplicationUser { 
                     UserName = "student@mail.com",
                     Email = "student@mail.com",
                     GroupId = 2, 
@@ -283,7 +297,7 @@ namespace LearningManagementSystem.Migrations
                 new ApplicationUser { 
                     UserName = "oscar@mail.com",
                     Email = "oscar@mail.com",
-                    GroupId = 4, 
+                    GroupId = 1, 
                     FirstName = "Oscar", 
                     LastName = "Von Shinkel",
                 } ,
@@ -297,9 +311,58 @@ namespace LearningManagementSystem.Migrations
                 new ApplicationUser { 
                     UserName = "susanne@mail.com",
                     Email = "susanne@mail.com",
-                    GroupId = 5, 
+                    GroupId = 1, 
                     FirstName = "Susanne", 
                     LastName = "Holmgren",
+                }, //
+                new ApplicationUser { 
+                    UserName = "ove@mail.com",
+                    Email = "ove@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Ove", 
+                    LastName = "Sundeberg",
+                } ,
+                new ApplicationUser { 
+                    UserName = "carmen@mail.com",
+                    Email = "carmen@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Carmen", 
+                    LastName = "Sanchez",
+                } ,
+                new ApplicationUser { 
+                    UserName = "bosse@mail.com",
+                    Email = "bosse@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Bo", 
+                    LastName = "Albrektson"
+                }  ,
+                 new ApplicationUser { 
+                    UserName = "klara@mail.com",
+                    Email = "klara@mail.com",
+                    GroupId = 2, 
+                    FirstName = "Klara", 
+                    LastName = "Swan",
+                } ,
+                new ApplicationUser { 
+                    UserName = "sara@mail.com",
+                    Email = "sara@mail.com",
+                    GroupId = 4, 
+                    FirstName = "Sara", 
+                    LastName = "Af Silverstolpe",
+                } ,
+                new ApplicationUser { 
+                    UserName = "torsten@mail.com",
+                    Email = "torsten@mail.com",
+                    GroupId = 4, 
+                    FirstName = "Torsten", 
+                    LastName = "Pample",
+                } ,
+                new ApplicationUser { 
+                    UserName = "lenita@mail.com",
+                    Email = "lenita@mail.com",
+                    GroupId = 1, 
+                    FirstName = "Lenita", 
+                    LastName = "Gonzales",
                 } 
 
             };
@@ -335,7 +398,31 @@ namespace LearningManagementSystem.Migrations
             userManager.AddToRole(studentUser6.Id, "Student");
 
             var studentUser7 = userManager.FindByName("susanne@mail.com");
-            userManager.AddToRole(studentUser7.Id, "Student");
+            userManager.AddToRole(studentUser7.Id, "Student");//
+
+            var teacherUser1 = userManager.FindByName("anette@mail.com");
+            userManager.AddToRole(teacherUser1.Id, "Teacher");
+
+            var studentUser8 = userManager.FindByName("ove@mail.com");
+            userManager.AddToRole(studentUser8.Id, "Student");
+
+            var studentUser9 = userManager.FindByName("lenita@mail.com");
+            userManager.AddToRole(studentUser9.Id, "Student");
+
+            var studentUser10 = userManager.FindByName("bosse@mail.com");
+            userManager.AddToRole(studentUser10.Id, "Student");
+
+            var studentUser11 = userManager.FindByName("carmen@mail.com");
+            userManager.AddToRole(studentUser11.Id, "Student");
+
+            var studentUser12 = userManager.FindByName("klara@mail.com");
+            userManager.AddToRole(studentUser12.Id, "Student");
+
+            var studentUser13 = userManager.FindByName("sara@mail.com");
+            userManager.AddToRole(studentUser13.Id, "Student");
+
+            var studentUser14 = userManager.FindByName("torsten@mail.com");
+            userManager.AddToRole(studentUser14.Id, "Student");
 
            
         }
