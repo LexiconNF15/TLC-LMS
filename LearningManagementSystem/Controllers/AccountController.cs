@@ -176,8 +176,9 @@ namespace LearningManagementSystem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (model.Role == "Teacher")
                 {
-                    model.GroupId = null;
+                    user.GroupId = null;
                 }
+               
                 if (result.Succeeded)
                 {
                     
