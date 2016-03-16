@@ -15,7 +15,7 @@ namespace LearningManagementSystem.Controllers
     public class DocumentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        //private const string localUrl = @"~\Uploads\";
+        //private const string localUrl = @"~\Uploads\" ;
         private const string localUrl = @"\Uploads\";
 
         // GET: Documents
@@ -77,17 +77,13 @@ namespace LearningManagementSystem.Controllers
                     // Här sparas filen som ska laddas upp i vår katalog
                     string nameOfFile = System.IO.Path.GetFileName(upload.FileName);
                     string saveFilePath = Path.Combine((Server.MapPath(@"~\Uploads\")), nameOfFile);
-                    //document.FilePath = Path.Combine((Server.MapPath(@"\Uploads\")), document.FileName);
-                    //document.FilePath = Path.Combine((Server.MapPath(localUrl)), document.FileName);
                     upload.SaveAs(saveFilePath);
 
                     /// Här laddar vi dbset<Documents> med korrekta värden.
                     document.UploadDate = DateTime.Now;
-                    //document.FileName = System.IO.Path.GetFileName(upload.FileName);
                     document.FileName = nameOfFile;
                     document.FilePath = (@localUrl + nameOfFile);
                     document.UploaderId = CurrentUser.Id;
-                    //document.GroupId = CurrentUser.GroupId;
                     db.Documents.Add(document);
                     db.SaveChanges();
                     //return RedirectToAction("Index");

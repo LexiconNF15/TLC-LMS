@@ -40,7 +40,7 @@ namespace LearningManagementSystem.Models
             {
                 yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
             }
-            if (GroupStart < DateTime.Now)
+            if (GroupStart < DateTime.Now.Date)
             {
                 yield return new ValidationResult("Startdatum har passerat!");
             }

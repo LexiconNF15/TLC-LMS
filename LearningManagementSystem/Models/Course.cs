@@ -41,7 +41,7 @@ namespace LearningManagementSystem.Models
             {
                 yield return new ValidationResult("Slutdatum måste vara senare än startdatum!");
             }
-            if (CourseStart < DateTime.Now)
+            if (CourseStart < DateTime.Now.Date)
             {
                 yield return new ValidationResult("Startdatum har passerat!");
             }
@@ -49,17 +49,12 @@ namespace LearningManagementSystem.Models
             {
                 ApplicationDbContext db = new ApplicationDbContext();
                 var CGroup = db.Groups.Where(g => g.GroupId == GroupId).FirstOrDefault();
-                //if (Group.GroupStart != null)
-                //{
-                //    if (Group.GroupEnd != null)
-                //    {
-
-                if ((CourseStart < CGroup.GroupStart) || (CourseEnd > CGroup.GroupEnd)) //Går ej efterson man väljer grupp efter datum...
+               
+                if ((CourseStart < CGroup.GroupStart) || (CourseEnd > CGroup.GroupEnd)) 
                         {
                             yield return new ValidationResult("Kursdatum ligger utanför tidsperioden för gruppen!");
                         }
-                //    }
-                //}
+               
             }
         }
     }
